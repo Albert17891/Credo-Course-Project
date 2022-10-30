@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankSystem.DataAccess", "BankSystem.DataAccess\BankSystem.DataAccess.csproj", "{084BC06F-DBF2-4565-A8A5-4BAFDDC6D7C8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankSystem.PersistenceDB", "BankSystem.PersistenceDB\BankSystem.PersistenceDB.csproj", "{8E98FF11-2239-4478-98C2-00E5279196E3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CredoATM.Servcie", "CredoATM.Servcie\CredoATM.Servcie.csproj", "{06FE1257-42A7-4A56-A731-ED9D6224832B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCredoBanking.Service", "MyCredoBanking.Service\MyCredoBanking.Service.csproj", "{A3009555-C404-48B3-9125-ABA8A9A9EA9E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCredoBanking", "MyCredoBanking\MyCredoBanking.csproj", "{BBDBEAC0-A7C1-4228-A68C-283FD332BE31}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankSystem.Domain", "BankSystem.Domain\BankSystem.Domain.csproj", "{FFC602AA-1D12-4148-BACA-E703BB88646D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{084BC06F-DBF2-4565-A8A5-4BAFDDC6D7C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{084BC06F-DBF2-4565-A8A5-4BAFDDC6D7C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{084BC06F-DBF2-4565-A8A5-4BAFDDC6D7C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{084BC06F-DBF2-4565-A8A5-4BAFDDC6D7C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E98FF11-2239-4478-98C2-00E5279196E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E98FF11-2239-4478-98C2-00E5279196E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E98FF11-2239-4478-98C2-00E5279196E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E98FF11-2239-4478-98C2-00E5279196E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06FE1257-42A7-4A56-A731-ED9D6224832B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06FE1257-42A7-4A56-A731-ED9D6224832B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06FE1257-42A7-4A56-A731-ED9D6224832B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06FE1257-42A7-4A56-A731-ED9D6224832B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3009555-C404-48B3-9125-ABA8A9A9EA9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3009555-C404-48B3-9125-ABA8A9A9EA9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3009555-C404-48B3-9125-ABA8A9A9EA9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3009555-C404-48B3-9125-ABA8A9A9EA9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBDBEAC0-A7C1-4228-A68C-283FD332BE31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBDBEAC0-A7C1-4228-A68C-283FD332BE31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBDBEAC0-A7C1-4228-A68C-283FD332BE31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBDBEAC0-A7C1-4228-A68C-283FD332BE31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFC602AA-1D12-4148-BACA-E703BB88646D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFC602AA-1D12-4148-BACA-E703BB88646D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFC602AA-1D12-4148-BACA-E703BB88646D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFC602AA-1D12-4148-BACA-E703BB88646D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AFC34B0F-92A6-4E70-BEEC-21910BF2418A}
+	EndGlobalSection
+EndGlobal
