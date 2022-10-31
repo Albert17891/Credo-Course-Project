@@ -1,9 +1,15 @@
+using BankSystem.PersistenceDB.Seed;
+using MyCredoBanking.Infrastracture.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddContext(builder.Configuration);
 
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -20,8 +26,11 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+UserSeed.AddUserAndRoles(app);
 
 app.Run();
