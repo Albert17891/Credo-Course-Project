@@ -3,7 +3,7 @@ using BankSystem.PersistenceDB.Context;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace MyCredoBanking.Infrastracture.Extensions;
+namespace MyCredoBanking.Infrastracture.ServiceCollectionExtensions;
 
 public static class DbExtension
 {
