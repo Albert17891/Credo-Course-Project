@@ -1,7 +1,7 @@
 ﻿using BankSystem.Domain.Models.Transactions;
 
 namespace BankSystem.Domain.Models.Transaction;
-public class SendToUtherTransaction
+public class SendToOtherTransaction
 {
     public int Id { get; set; }
     public int SenderUserId { get; set; }

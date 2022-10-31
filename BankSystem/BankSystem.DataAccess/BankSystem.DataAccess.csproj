@@ -15,4 +15,8 @@
     <None Remove="Service\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BankSystem.PersistenceDB\BankSystem.PersistenceDB.csproj" />
+  </ItemGroup>
+
 </Project>
