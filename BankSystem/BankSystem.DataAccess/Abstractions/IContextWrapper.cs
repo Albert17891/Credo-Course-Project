@@ -1,7 +1,7 @@
 ﻿namespace BankSystem.DataAccess.Abstractions;
-public interface IContextWrapper
+public interface IContextWrapper:IDisposable
 {
     ICreditCardRepository cardRepository { get; }
     IUserAccountRepository userAccountRepository { get; }
-    void Complete();
+    Task Complete();
 }

@@ -1,10 +1,11 @@
 ﻿namespace BankSystem.DataAccess.Abstractions;
 public interface IBaseRepository<T>
 {
-    List<T> GetAll();
-    T GetByKey(string key);
+    IQueryable<T> Table { get; }
+    Task<List<T>> GetAllAsync();
+    Task<T> GetByKeyAsync(params object[] key);
     void Update(T entity);
 
-    void AddEntity(T entity);
+    Task AddEntityAsync(T entity);
 
 }
