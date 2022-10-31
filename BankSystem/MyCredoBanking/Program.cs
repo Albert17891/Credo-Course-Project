@@ -1,11 +1,12 @@
 using BankSystem.PersistenceDB.Seed;
-using MyCredoBanking.Infrastracture.Extensions;
+using MyCredoBanking.Infrastracture.ServiceCollectionExtensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddContext(builder.Configuration);
+builder.Services.AddRepositoryServcies();
 
 var app = builder.Build();
 
