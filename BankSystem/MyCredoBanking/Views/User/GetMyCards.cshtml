@@ -1,0 +1,54 @@
+﻿@model IEnumerable<CreditCardResponse>
+
+@{
+    ViewData["Title"] = "CreditCard Page";
+}
+
+<div class="text-left">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">მომხმარებლის დამატება</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CardNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CardExpireDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cvv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pin)
+            </th>
+           
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CardNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CardExpireDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cvv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pin)
+                </td>              
+
+
+                
+            </tr>
+        }
+    </tbody>
+</table>

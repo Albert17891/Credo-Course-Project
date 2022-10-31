@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "User Page";
+}
+
+<div class="text-left">
+    <h1 class="display-4">მოგესალმებით ბატონო @User.Identity.Name;</h1>  
+</div>
+
+<ul>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="GetMyCards">ჩემი ბარათები</a>
+    </li>
+
+    <li class="nav-item">
+         <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="GetMyAccounts">ჩემი ანგარიშები</a>
+    </li>
+</ul>
