@@ -8,5 +8,5 @@ public class AppUser : IdentityUser
     public string LastName { get; set; }
     public string IdNumber { get; set; }
     public DateTime BirthDate { get; set; }
-    public string Email { get; set; }
+    
 }

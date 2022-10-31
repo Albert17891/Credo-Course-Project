@@ -37,7 +37,7 @@ public class AccountController : Controller
             ModelState.AddModelError("", "Error occurrences in Register Time");
             return View();
         }
-        user.UserName = user.Id;
+        user.UserName = user.Id;  //UserName is Equals User Id
 
         await _userManager.AddToRoleAsync(user, RolesEnum.User.ToString());
         return RedirectToAction("Operator","operator");
@@ -56,7 +56,7 @@ public class AccountController : Controller
         if (!ModelState.IsValid)
             return View();
 
-        var user = await _userManager.FindByNameAsync(model.UserName);
+        var user = await _userManager.FindByEmailAsync(model.Email);
 
         if (user != null)
         {
