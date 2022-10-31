@@ -17,8 +17,4 @@
     <ProjectReference Include="..\MyCredoBanking.Service\MyCredoBanking.Service.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\Response\" />
-  </ItemGroup>
-
 </Project>
