@@ -17,5 +17,8 @@ public class CreditCardConfiguration : IEntityTypeConfiguration<CreditCard>
         builder.Property(x => x.Cvv).IsRequired();
         builder.Property(x => x.CardNumber).IsRequired();
         builder.Property(x => x.CardExpireDate).IsRequired();
+
+        builder.HasOne(x => x.User).WithMany(x => x.CreditCards).HasForeignKey(u => u.UserId);
+        builder.HasOne(x => x.UserAccount).WithMany(x => x.CreditCards).HasForeignKey(u => u.AccountId).OnDelete(DeleteBehavior.NoAction);
     }
 }

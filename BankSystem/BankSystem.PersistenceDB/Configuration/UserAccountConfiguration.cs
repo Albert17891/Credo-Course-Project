@@ -14,6 +14,12 @@ public class UserAccountConfiguration : IEntityTypeConfiguration<UserAccount>
     public void Configure(EntityTypeBuilder<UserAccount> builder)
     {
         builder.Property(x => x.Currency).IsRequired();
+     
         builder.Property(x => x.Iban).IsRequired();
+
+        builder.HasOne(x => x.User).WithMany(x => x.UserAccounts).HasForeignKey(u => u.UserId);
+
+        //builder.HasMany(x => x.CreditCards).WithOne(x => x.UserAccount).HasForeignKey(x => x.AccountId);
+
     }
 }

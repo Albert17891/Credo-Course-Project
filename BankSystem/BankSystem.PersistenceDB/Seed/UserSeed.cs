@@ -14,7 +14,7 @@ public static class UserSeed
         using (var scope = builder.ApplicationServices.CreateScope())
         {
             var service = scope.ServiceProvider;
-            var userContext = service.GetRequiredService<UserIdentityContext>();
+            var userContext = service.GetRequiredService<IdentityContext>();
             var userManager = service.GetRequiredService<UserManager<AppUser>>();
             var roleManager = service.GetRequiredService<RoleManager<IdentityRole>>();
 
@@ -24,7 +24,7 @@ public static class UserSeed
         }
     }
 
-    private static void Migrate(UserIdentityContext context)
+    private static void Migrate(IdentityContext context)
     {
         context.Database.Migrate();
     }
