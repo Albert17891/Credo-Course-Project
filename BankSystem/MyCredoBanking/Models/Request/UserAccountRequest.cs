@@ -7,5 +7,5 @@ public class UserAccountRequest
     public int CardId { get; set; }
     public string Iban { get; set; }
     public decimal Amount { get; set; }
-    public string Currency { get; set; }
+    public Currency Currency { get; set; }
 }

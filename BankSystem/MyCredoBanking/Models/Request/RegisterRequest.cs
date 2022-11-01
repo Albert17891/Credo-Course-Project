@@ -9,7 +9,7 @@ public class RegisterRequest
 
     [Required]
     public string LastName { get; set; }
-    [Required]
+    [Required]    
     public string IdNumber { get; set; }
     [Required]
     [DataType(DataType.Date)]

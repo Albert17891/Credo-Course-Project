@@ -16,19 +16,19 @@
                 <input asp-for="UserId" class="visually-hidden" />
             </div>
             <div class="form-group">
-                <label asp-for="Iban" class="control-label"></label>
+                <label asp-for="Iban" class="control-label">ანგარიშის ნომერი</label>
                 <input asp-for="Iban" class="form-control" />
                 <span asp-validation-for="Iban" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Amount" class="control-label"></label>
+                <label asp-for="Amount" class="control-label">ბალანსი</label>
                 <input asp-for="Amount" class="form-control" />
                 <span asp-validation-for="Amount" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Currency" class="control-label"></label>
-                <input asp-for="Currency" class="form-control" />
-                <span asp-validation-for="Currency" class="text-danger"></span>
+                @Html.DropDownListFor(m => m.Currency,
+                new SelectList(Enum.GetValues(typeof(Currency))),
+                "აირჩიე ვალუტა")
             </div>           
 
             <div class="form-group">

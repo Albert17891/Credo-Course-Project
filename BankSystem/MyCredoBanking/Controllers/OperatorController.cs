@@ -33,9 +33,11 @@ public class OperatorController : Controller
         return View(userListModel);
     }
 
+    [Route("CreditCard")]
     [HttpGet("{Id}")]
     public IActionResult CreditCard(string Id)
     {
+       
         return View(new CreditCardRequest { UserId=Id});
     }
 
