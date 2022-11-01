@@ -1,0 +1,42 @@
+﻿@model IEnumerable<UserAccountRequest>
+
+@{
+    ViewData["Title"] = "MyAccount Page";
+}
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Iban)
+            </th>          
+            <th>
+                @Html.DisplayNameFor(model => model.Currency)
+            </th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Iban)
+                </td>               
+                <td>
+                    @Html.DisplayFor(modelItem => item.Currency)
+                </td>
+
+
+                <td>
+                    @Html.ActionLink("ჩარიცხვა", "ChargeAccount",, new {  Id=item.Id,UserId=item.UserId})
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
