@@ -1,0 +1,45 @@
+﻿@model IEnumerable<UserAccountResponse>
+
+@{
+    ViewData["Title"] = "UserAccount Page";
+}
+
+<div class="text-left">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">მომხმარებლის დამატება</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Iban)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Currency)
+            </th>         
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Iban)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Currency)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

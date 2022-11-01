@@ -41,7 +41,7 @@ public static class UserSeed
             FirstName = "Albert",
             LastName = "Gevorkyan",
             UserName = "Operator",
-            Email = "abogevorgian@gmail.com",
+            Email = "abo@gmail.com",
             IdNumber = "47001034566",
             BirthDate = DateTime.Parse("1994/07/01"),
             EmailConfirmed = true,
