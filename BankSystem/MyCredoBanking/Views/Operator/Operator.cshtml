@@ -22,13 +22,7 @@
             </th>
             <th>
                 დაბ. თარიღი
-            </th>
-            <th>
-                საკრედიტო ბარათები
-            </th>
-            <th>
-                ანგარიშები
-            </th>           
+            </th>          
 
             <th></th>
         </tr>
@@ -49,19 +43,13 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.BirthDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreditCards)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UserAccounts)
-                </td>
+                </td>              
                
 
                 <td>
-                    @Html.ActionLink("ბარათის დამატება ", "CreditCard", new {  Id=item.Id})
+                    @Html.ActionLink("ანგარიშები", "GetMyAccounts","UserController", new {  Id=item.Id})
                     @Html.ActionLink("ანგარიშის დამატება ", "UserAccount", new { id=item.Id})
-                    @Html.ActionLink("მომხმარებლის წაშლა", "DeleteUser", new {  id=item.Id})
+                   @* @Html.ActionLink("მომხმარებლის წაშლა", "DeleteUser", new {  id=item.Id})*@
                 </td>
             </tr>
         }

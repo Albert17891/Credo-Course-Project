@@ -31,15 +31,5 @@ public class UserController : Controller
         return Ok();
     }
 
-    [Route("SendToOther")]
-    [HttpGet]
-    public  IActionResult SendToOther()
-    {
-        return View();
-    }
-
-    public async Task<IActionResult> SendToMe()
-    {
-        return View();
-    }
+  
 }

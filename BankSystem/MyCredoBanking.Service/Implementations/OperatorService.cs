@@ -19,6 +19,8 @@ namespace MyCredoBanking.Service.Implementations
             var accountToInsert = userAccount.Adapt<UserAccount>();
 
             await _context.userAccountRepository.AddEntityAsync(accountToInsert);
+
+            await _context.Complete();
         }
 
         public async Task AddCardForAccount(CreditCardServiceModel creditCard)
