@@ -19,23 +19,27 @@ public class UserController : Controller
         return View();
     }
 
-    //public async Task<IActionResult> GetMyCards()
-    //{
-    //    //var cards=_
-    //}
+    public async Task<IActionResult> GetMyCards()
+    {
+        //To Do
+        return Ok();
+    }
 
-    //public async Task<IActionResult> GetMyAccounts()
-    //{
+    public async Task<IActionResult> GetMyAccounts()
+    {
+        //To Do
+        return Ok();
+    }
 
-    //}
+    [Route("SendToOther")]
+    [HttpGet]
+    public  IActionResult SendToOther()
+    {
+        return View();
+    }
 
-    //public async Task<IActionResult> SendToOther()
-    //{
-
-    //}
-
-    //public async Task<IActionResult> SendToMe()
-    //{
-
-    //}
+    public async Task<IActionResult> SendToMe()
+    {
+        return View();
+    }
 }
