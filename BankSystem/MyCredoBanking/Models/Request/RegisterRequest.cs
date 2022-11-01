@@ -10,6 +10,7 @@ public class RegisterRequest
     [Required]
     public string LastName { get; set; }
     [Required]    
+    [RegularExpression("^[0-9]{11}+$")]
     public string IdNumber { get; set; }
     [Required]
     [DataType(DataType.Date)]
