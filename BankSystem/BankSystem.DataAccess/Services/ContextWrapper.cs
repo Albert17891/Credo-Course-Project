@@ -4,11 +4,11 @@ using BankSystem.PersistenceDB.Context;
 namespace BankSystem.DataAccess.Servcices;
 public class ContextWrapper : IContextWrapper
 {
-    private readonly BankingSystemContext _context;
+    private readonly IdentityContext _context;
     public ICreditCardRepository cardRepository { get; }
     public IUserAccountRepository userAccountRepository { get; }
 
-    public ContextWrapper(BankingSystemContext context)
+    public ContextWrapper(IdentityContext context)
     {
         _context = context;
         cardRepository = new CreditCardRepository(_context);
