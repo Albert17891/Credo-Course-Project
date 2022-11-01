@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankSystem.DataAccess", "Ba
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankSystem.PersistenceDB", "BankSystem.PersistenceDB\BankSystem.PersistenceDB.csproj", "{8E98FF11-2239-4478-98C2-00E5279196E3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CredoATM.Servcie", "CredoATM.Servcie\CredoATM.Servcie.csproj", "{06FE1257-42A7-4A56-A731-ED9D6224832B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCredoBanking.Service", "MyCredoBanking.Service\MyCredoBanking.Service.csproj", "{A3009555-C404-48B3-9125-ABA8A9A9EA9E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCredoBanking", "MyCredoBanking\MyCredoBanking.csproj", "{BBDBEAC0-A7C1-4228-A68C-283FD332BE31}"
@@ -29,10 +27,6 @@ Global
 		{8E98FF11-2239-4478-98C2-00E5279196E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E98FF11-2239-4478-98C2-00E5279196E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E98FF11-2239-4478-98C2-00E5279196E3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{06FE1257-42A7-4A56-A731-ED9D6224832B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{06FE1257-42A7-4A56-A731-ED9D6224832B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{06FE1257-42A7-4A56-A731-ED9D6224832B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{06FE1257-42A7-4A56-A731-ED9D6224832B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A3009555-C404-48B3-9125-ABA8A9A9EA9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A3009555-C404-48B3-9125-ABA8A9A9EA9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3009555-C404-48B3-9125-ABA8A9A9EA9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
