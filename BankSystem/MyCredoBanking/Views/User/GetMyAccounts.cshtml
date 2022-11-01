@@ -1,4 +1,4 @@
-﻿@model IEnumerable<UserAccountResponse>
+﻿@model IEnumerable<UserAccountRequest>
 
 @{
     ViewData["Title"] = "UserAccount Page";
@@ -38,6 +38,11 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Currency)
+                </td>
+
+
+                <td>
+                    @Html.ActionLink("ბარათის დამატება", "CreditCard","OperatorController", new {  Id=item.Id,UserId=item.UserId})
                 </td>
             </tr>
         }
