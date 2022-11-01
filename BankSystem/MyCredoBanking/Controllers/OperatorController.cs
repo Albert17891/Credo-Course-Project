@@ -34,7 +34,7 @@ public class OperatorController : Controller
     }
 
     [Route("CreditCard")]
-    [HttpGet("{Id}")]
+    [HttpGet]//Check
     public IActionResult CreditCard(string Id)
     {
        
