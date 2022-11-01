@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace MyCredoBanking.Controllers;
 public class UserController : Controller
 {
-    private readonly UserManager<AppUser> _userManager;
+  
 
-    public UserController(UserManager<AppUser> userManager)
+    public UserController()
     {
-        _userManager = userManager;
+        
     }
 
     [Route("Index")]
@@ -19,9 +19,10 @@ public class UserController : Controller
         return View();
     }
 
+
     public async Task<IActionResult> GetMyCards()
     {
-        //To Do
+       
         return Ok();
     }
 

@@ -1,19 +1,24 @@
 ﻿using BankSystem.Domain.Models;
+using Mapster;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyCredoBanking.Models.Request;
+using MyCredoBanking.Service.Abstractions;
+using MyCredoBanking.Service.Model;
 
 namespace MyCredoBanking.Controllers;
 //[Authorize]
 public class OperatorController : Controller
 {
     private readonly UserManager<AppUser> _userManager;
+    private readonly IOperatorService _operatorService;
 
-    public OperatorController(UserManager<AppUser> userManager)
+    public OperatorController(UserManager<AppUser> userManager,IOperatorService operatorService)
     {
         _userManager = userManager;
+        _operatorService = operatorService;
     }
     public async Task<IActionResult> Operator()
     {
@@ -44,7 +49,8 @@ public class OperatorController : Controller
     [HttpPost]
     public async Task<IActionResult> CreateCreditCard(CreditCardRequest cardRequest)
     {
-        return Ok();
+        await _operatorService.AddCardForAccount(cardRequest.Adapt<CreditCardServiceModel>());
+        return RedirectToAction("Operator");
     }
 
     [Route("UserAccount")]
@@ -58,7 +64,9 @@ public class OperatorController : Controller
     [HttpPost]
     public async Task<IActionResult> CreateUserAccount(UserAccountRequest userAccountRequest)
     {
-        return Ok();
+       await  _operatorService.AddBankAccountForUser(userAccountRequest.Adapt<UserAccountServiceModel>());
+
+        return RedirectToAction("Operator");
     }
 
 }
