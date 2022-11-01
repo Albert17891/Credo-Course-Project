@@ -11,15 +11,13 @@ public static class DbExtension
     {
         var connectionString = configuration["ConnectionStrings:sqlConnection"];
 
-        services.AddDbContext<BankingSystemContext>(option => option.UseSqlServer(connectionString));
+        services.AddDbContext<IdentityContext>(option => option.UseSqlServer(connectionString));
 
         services.AddIdentity<AppUser, IdentityRole>(opt =>
         {
             opt.User.RequireUniqueEmail = true;     
 
-        }).AddEntityFrameworkStores<UserIdentityContext>();
-
-        services.AddDbContext<UserIdentityContext>(option => option.UseSqlServer(connectionString));
+        }).AddEntityFrameworkStores<IdentityContext>();
 
         return services;
     }

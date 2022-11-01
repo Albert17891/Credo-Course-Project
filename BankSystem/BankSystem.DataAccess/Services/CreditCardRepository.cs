@@ -7,8 +7,8 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 namespace BankSystem.DataAccess.Servcices;
 public class CreditCardRepository : BaseRepository<CreditCard>, ICreditCardRepository
 {
-    private readonly BankingSystemContext _context;
-    public CreditCardRepository(BankingSystemContext context) : base(context)
+    private readonly IdentityContext _context;
+    public CreditCardRepository(IdentityContext context) : base(context)
     {
         _context = context;
     }

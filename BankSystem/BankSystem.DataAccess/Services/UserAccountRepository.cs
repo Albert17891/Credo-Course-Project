@@ -6,8 +6,8 @@ using Microsoft.EntityFrameworkCore;
 namespace BankSystem.DataAccess.Servcices;
 public class UserAccountRepository : BaseRepository<UserAccount>, IUserAccountRepository
 {
-    private readonly BankingSystemContext _context;
-    public UserAccountRepository(BankingSystemContext context) : base(context)
+    private readonly IdentityContext _context;
+    public UserAccountRepository(IdentityContext context) : base(context)
     {
         _context = context;
     }

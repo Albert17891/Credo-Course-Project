@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore;
 namespace BankSystem.DataAccess.Servcices;
 public class BaseRepository<T>:IBaseRepository<T> where T :class
 {
-	private readonly BankingSystemContext _context;
+	private readonly IdentityContext _context;
 	private readonly DbSet<T> _dbSet;
 
-	public BaseRepository(BankingSystemContext context)
+	public BaseRepository(IdentityContext context)
 	{
 		_context = context;
 		_dbSet = _context.Set<T>();
