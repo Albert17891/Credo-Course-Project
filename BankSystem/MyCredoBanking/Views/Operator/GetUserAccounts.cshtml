@@ -1,0 +1,54 @@
+﻿@model IEnumerable<UserAccountRequest>
+
+@{
+    ViewData["Title"] = "UserAccount Page";
+}
+
+<div class="text-left">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">მომხმარებლის დამატება</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ანგარიშის ნომერი
+            </th>
+            <th>
+                არსებული თანხა
+            </th>
+            <th>
+                ვალუტა
+            </th>         
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Iban)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Currency)
+                </td>
+
+
+                <td>
+                    @using (Html.BeginForm("CreditCard", "Operator",new CreditCardRequest { UserAccountId = item.Id, UserId = item.UserId }, FormMethod.Post))
+                    {                       
+                       
+                        <input type="submit" value="ბარათის დამატება" class="btn btn-default" id="create" />
+                    }
+                    
+            </tr>
+        }
+    </tbody>
+</table>
