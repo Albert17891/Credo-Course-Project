@@ -4,7 +4,7 @@ using BankSystem.PersistenceDB.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace BankSystem.DataAccess.Servcices;
+namespace BankSystem.DataAccess.Services;
 public class CreditCardRepository : BaseRepository<CreditCard>, ICreditCardRepository
 {
     private readonly IdentityContext _context;
