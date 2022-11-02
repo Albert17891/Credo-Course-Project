@@ -34,6 +34,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-UserSeed.AddUserAndRoles(app);
+await UserSeed.AddUserAndRoles(app);
 
 app.Run();

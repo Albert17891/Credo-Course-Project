@@ -1,5 +1,5 @@
 ﻿using BankSystem.DataAccess.Abstractions;
-using BankSystem.DataAccess.Servcices;
+using BankSystem.DataAccess.Services;
 
 namespace MyCredoBanking.Infrastracture.ServiceCollectionExtensions;
 
@@ -10,6 +10,7 @@ public static class RepositoryExtensions
         services.AddScoped<IContextWrapper, ContextWrapper>();
         services.AddScoped<ICreditCardRepository, CreditCardRepository>();
         services.AddScoped<IUserAccountRepository, UserAccountRepository>();
+        services.AddScoped<ITransactionRepository, TransactionRepository>();
         return services;
     }
 }

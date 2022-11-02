@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BankSystem.PersistenceDB.Migrations
 {
-    public partial class createDB : Migration
+    public partial class CreateCredoDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -212,7 +212,6 @@ namespace BankSystem.PersistenceDB.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    AccountId = table.Column<int>(type: "int", nullable: false),
                     UserAccountId = table.Column<int>(type: "int", nullable: false),
                     CardNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CardExpireDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -232,7 +231,8 @@ namespace BankSystem.PersistenceDB.Migrations
                         name: "FK_CreditCards_UsersAccounts_UserAccountId",
                         column: x => x.UserAccountId,
                         principalTable: "UsersAccounts",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(

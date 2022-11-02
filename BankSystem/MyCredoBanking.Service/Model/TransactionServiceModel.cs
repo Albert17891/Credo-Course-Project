@@ -1,14 +1,10 @@
 ﻿using BankSystem.Domain.Models.Enum;
 
-namespace BankSystem.Domain.Models;
+namespace MyCredoBanking.Service.Model;
 
-public class Transactions
+public class TransactionServiceModel
 {
-    public int Id { get; set; }
-
     public string UserId { get; set; }
-
-    public AppUser User { get; set; }
 
     public string ReceiverUserId { get; set; }
 
