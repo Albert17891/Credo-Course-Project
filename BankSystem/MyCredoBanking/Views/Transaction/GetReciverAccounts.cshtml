@@ -1,0 +1,45 @@
+﻿@model IEnumerable<UserAccountRequest>
+
+@{
+    ViewData["Title"] = "Get Reciver Page";
+}
+
+<h1>
+    აირჩიე რომელ ანგარიში გინდა ჩარიცხვა
+</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ანგარიშის ნომერი
+            </th>
+            <th>
+               ვალუტა
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Iban)
+                </td>                
+                <td>
+                    @Html.DisplayFor(modelItem => item.Currency)
+                </td>
+              
+                <td>
+                    @Html.ActionLink("აირჩიე ანგარიში","HowMuchMoney",new{Id=item.Id})
+                </td>
+               
+                   
+
+            </tr>
+        }
+    </tbody>
+</table>

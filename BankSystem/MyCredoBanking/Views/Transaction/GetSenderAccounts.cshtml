@@ -1,21 +1,20 @@
 ﻿@model IEnumerable<UserAccountRequest>
 
 @{
-    ViewData["Title"] = "MyAccount Page";
+    ViewData["Title"] = "UserAccount Page";
 }
 
-
+<h1>აირჩიე შენი ანგარიში</h1>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Iban)
-            </th>          
-            <th>
-                @Html.DisplayNameFor(model => model.Currency)
+                ანგარიშის ნომერი
             </th>
-
+            <th>
+                ვალუტა
+            </th>
 
             <th></th>
         </tr>
@@ -27,15 +26,18 @@
 
                 <td>
                     @Html.DisplayFor(modelItem => item.Iban)
-                </td>               
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Currency)
                 </td>
-
-
+                
+            
                 <td>
-                    @Html.ActionLink("ჩარიცხვა", "ChargeAccount",, new {  Id=item.Id,UserId=item.UserId})
+                    @Html.ActionLink("აირჩიე ანგარიში","SendToOther",new{Id=item.Id})
                 </td>
+
+
+
             </tr>
         }
     </tbody>
