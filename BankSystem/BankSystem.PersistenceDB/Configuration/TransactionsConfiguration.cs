@@ -2,13 +2,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace BankSystem.PersistenceDB.Configuration
+namespace BankSystem.PersistenceDB.Configuration;
+
+internal class TransactionsConfiguration : IEntityTypeConfiguration<Transactions>
 {
-    internal class TransactionsConfiguration : IEntityTypeConfiguration<Transactions>
+    public void Configure(EntityTypeBuilder<Transactions> builder)
     {
-        public void Configure(EntityTypeBuilder<Transactions> builder)
-        {
-            builder.HasOne(x => x.User).WithMany(x => x.Transactions).HasForeignKey(x => x.UserId);
-        }
+        builder.HasOne(x => x.User).WithMany(x => x.Transactions).HasForeignKey(x => x.UserId);
     }
 }

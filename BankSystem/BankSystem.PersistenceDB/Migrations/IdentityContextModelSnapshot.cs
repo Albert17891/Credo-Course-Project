@@ -110,9 +110,6 @@ namespace BankSystem.PersistenceDB.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("AccountId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CardExpireDate")
                         .HasColumnType("datetime2");
 
@@ -350,13 +347,13 @@ namespace BankSystem.PersistenceDB.Migrations
                     b.HasOne("BankSystem.Domain.Models.UserAccount", "UserAccount")
                         .WithMany("CreditCards")
                         .HasForeignKey("UserAccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("BankSystem.Domain.Models.AppUser", "User")
                         .WithMany("CreditCards")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -369,7 +366,7 @@ namespace BankSystem.PersistenceDB.Migrations
                     b.HasOne("BankSystem.Domain.Models.AppUser", "User")
                         .WithMany("Transactions")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -380,7 +377,7 @@ namespace BankSystem.PersistenceDB.Migrations
                     b.HasOne("BankSystem.Domain.Models.AppUser", "User")
                         .WithMany("UserAccounts")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");
