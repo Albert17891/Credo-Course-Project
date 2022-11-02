@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MyCredoBanking.Infrastracture.Resources;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyCredoBanking.Models.Request;
 
@@ -9,8 +10,8 @@ public class RegisterRequest
 
     [Required]
     public string LastName { get; set; }
-    [Required]    
-    [RegularExpression("^[0-9]{11}+$")]
+    [Required]
+    [RegularExpression("^[0-9]{11}$", ErrorMessage = ErrorMessage.IdNumber)]
     public string IdNumber { get; set; }
     [Required]
     [DataType(DataType.Date)]

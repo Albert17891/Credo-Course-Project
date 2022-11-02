@@ -24,7 +24,7 @@ public class ContextWrapper : IContextWrapper
 
     public void Complete()
     {
-        _context.SaveChangesAsync();
+         _context.SaveChanges();
     }
 
     public void Dispose()
