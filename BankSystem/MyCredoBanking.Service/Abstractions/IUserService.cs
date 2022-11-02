@@ -1,14 +1,11 @@
 ﻿
-
 using MyCredoBanking.Service.Model;
 
 namespace MyCredoBanking.Service.Abstractions;
 
 public interface IUserService
 {
-    Task InnerTransaction();
-
-    Task OuterTransaction();
+    Task InnerTransaction(TransactionServiceModel transaction);
 
     Task<IList<CreditCardServiceModel>> GetAllCard(string userId);
 
