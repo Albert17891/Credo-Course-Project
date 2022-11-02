@@ -4,7 +4,7 @@ using MyCredoBanking.Service.Implementations;
 
 namespace MyCredoBanking.Infrastracture.ServiceCollectionExtensions
 {
-    public static class BankSystemServiceExtension
+    public static class AddServicesExtension
     {
         public static IServiceCollection AddServices(this IServiceCollection services)
         {

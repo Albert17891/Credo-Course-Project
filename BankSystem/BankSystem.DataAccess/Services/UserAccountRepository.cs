@@ -3,7 +3,7 @@ using BankSystem.Domain.Models;
 using BankSystem.PersistenceDB.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace BankSystem.DataAccess.Servcices;
+namespace BankSystem.DataAccess.Services;
 public class UserAccountRepository : BaseRepository<UserAccount>, IUserAccountRepository
 {
     private readonly IdentityContext _context;

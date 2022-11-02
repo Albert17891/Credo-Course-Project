@@ -1,25 +1,30 @@
 ﻿using BankSystem.DataAccess.Abstractions;
 using BankSystem.PersistenceDB.Context;
 
-namespace BankSystem.DataAccess.Servcices;
+namespace BankSystem.DataAccess.Services;
 public class ContextWrapper : IContextWrapper
 {
     private readonly IdentityContext _context;
+
     public ICreditCardRepository cardRepository { get; }
+
     public IUserAccountRepository userAccountRepository { get; }
+
+    public ITransactionRepository transactionRepository { get; }
 
     public ContextWrapper(IdentityContext context)
     {
         _context = context;
         cardRepository = new CreditCardRepository(_context);
         userAccountRepository = new UserAccountRepository(_context);
+        transactionRepository = new TransactionRepository(_context);
     }
 
     
 
-    public async Task Complete()
+    public void Complete()
     {
-        await _context.SaveChangesAsync();
+        _context.SaveChangesAsync();
     }
 
     public void Dispose()

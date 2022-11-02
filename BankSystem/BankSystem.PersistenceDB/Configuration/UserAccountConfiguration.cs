@@ -1,11 +1,6 @@
 ﻿using BankSystem.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BankSystem.PersistenceDB.Configuration;
 
@@ -20,6 +15,5 @@ public class UserAccountConfiguration : IEntityTypeConfiguration<UserAccount>
         builder.HasOne(x => x.User).WithMany(x => x.UserAccounts).HasForeignKey(u => u.UserId);
 
         //builder.HasMany(x => x.CreditCards).WithOne(x => x.UserAccount).HasForeignKey(x => x.AccountId);
-
     }
 }
