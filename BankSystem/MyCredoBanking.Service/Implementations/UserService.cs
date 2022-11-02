@@ -1,5 +1,7 @@
 ﻿using BankSystem.DataAccess.Abstractions;
+using Mapster;
 using MyCredoBanking.Service.Abstractions;
+using MyCredoBanking.Service.Model;
 
 namespace MyCredoBanking.Service.Implementations
 {
@@ -12,14 +14,25 @@ namespace MyCredoBanking.Service.Implementations
             _context = context;
         }
 
-        public Task<IList<string>> GetAllAccount(string userId)
+        public async Task<IList<UserAccountServiceModel>> GetAllAccount(string userId)
         {
-            throw new NotImplementedException();
+            var AllAccount = await _context.userAccountRepository.GetAllAsync();
+            var result = from account in AllAccount
+                         where account.UserId == userId
+                         select account;
+
+            return result.Adapt<IList<UserAccountServiceModel>>();
         }
 
-        public Task<IList<string>> GetAllCard(string userId)
+        public async Task<IList<CreditCardServiceModel>> GetAllCard(string userId)
         {
-            throw new NotImplementedException();
+            var AllCard = await _context.cardRepository.GetAllAsync();
+
+            var result = from card in AllCard
+                         where card.UserId == userId
+                         select card;
+
+            return result.Adapt<IList<CreditCardServiceModel>>();
         }
 
         public Task InnerTransaction()

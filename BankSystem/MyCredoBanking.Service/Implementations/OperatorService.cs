@@ -28,7 +28,7 @@ namespace MyCredoBanking.Service.Implementations
             var creditCardToInsert = creditCard.Adapt<CreditCard>();
 
             await _context.cardRepository.AddEntityAsync(creditCardToInsert);
-
+            _context.Complete();
         }
     }
 }
