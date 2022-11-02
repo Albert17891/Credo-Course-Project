@@ -1,5 +1,6 @@
 ﻿using BankSystem.Domain.Models;
 using BankSystem.Domain.Models.Enum;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MyCredoBanking.Models.Request;
@@ -16,7 +17,7 @@ public class AccountController : Controller
         _signinManager = signInManager;
     }
 
-    //[Authorize(Roles ="Operator")]
+    [Authorize(Roles ="Operator")]
     [HttpGet]
     public IActionResult Register()
     {
@@ -37,7 +38,7 @@ public class AccountController : Controller
             ModelState.AddModelError("", "Error occurrences in Register Time");
             return View();
         }
-        user.UserName = user.Id;  //UserName is Equals User Id
+        user.UserName = user.Email;  //UserName is Equals User Email
 
         await _userManager.AddToRoleAsync(user, RolesEnum.User.ToString());
         return RedirectToAction("Operator","operator");
