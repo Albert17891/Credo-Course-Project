@@ -4,18 +4,14 @@
     ViewData["Title"] = "CreditCard Page";
 }
 
-<div class="text-left">
-    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">მომხმარებლის დამატება</a>
-</div>
-
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.CardNumber)
+               ბარათის ნომერი
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CardExpireDate)
+                ბარათის ვადა
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Cvv)
@@ -46,9 +42,10 @@
                     @Html.DisplayFor(modelItem => item.Pin)
                 </td>              
 
-
+               
                 
             </tr>
-        }
+        }        
     </tbody>
+   
 </table>

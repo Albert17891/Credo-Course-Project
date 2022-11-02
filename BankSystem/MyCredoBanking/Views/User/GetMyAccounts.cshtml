@@ -12,13 +12,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Iban)
+                ანგარიშის ნომერი
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Amount)
+                არსებული თანხა
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Currency)
+                ვალუტა
             </th>         
 
 
@@ -42,8 +42,12 @@
 
 
                 <td>
-                    @Html.ActionLink("ბარათის დამატება", "CreditCard","OperatorController", new {  Id=item.Id,UserId=item.UserId})
-                </td>
+                    @using (Html.BeginForm("CreditCard", "Operator",new CreditCardRequest { UserAccountId = item.Id, UserId = item.UserId }, FormMethod.Post))
+                    {                       
+                       
+                        <input type="submit" value="ბარათის დამატება" class="btn btn-default" id="create" />
+                    }
+                    
             </tr>
         }
     </tbody>
