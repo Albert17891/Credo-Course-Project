@@ -7,7 +7,7 @@ public class CreditCard
 
     public AppUser User { get; set; }
 
-    public int AccountId { get; set; }
+    public int UserAccountId { get; set; }
 
     public UserAccount UserAccount { get; set; }
 
