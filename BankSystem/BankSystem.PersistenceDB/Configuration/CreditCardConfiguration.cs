@@ -15,6 +15,9 @@ public class CreditCardConfiguration : IEntityTypeConfiguration<CreditCard>
     {
         builder.Property(x => x.Pin).IsRequired();
         builder.Property(x => x.Cvv).IsRequired();
+
+        builder.HasIndex(x => x.CardNumber).IsUnique();
+
         builder.Property(x => x.CardNumber).IsRequired();
         builder.Property(x => x.CardExpireDate).IsRequired();
 
