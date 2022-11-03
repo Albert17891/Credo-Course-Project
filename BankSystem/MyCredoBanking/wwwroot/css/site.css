@@ -16,3 +16,35 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.btn {
+    border: 1px solid gray;
+    background: rgb(0, 148, 255);
+    color: rgb(255, 255, 255) !important;
+    width: 250px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.user-add {
+    border: 1px solid gray;
+    background: rgb(0, 148, 255);
+    color: rgb(255, 255, 255) !important;
+    width: 250px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+   .user-add:hover {
+        background: rgb(0, 255, 255);
+        color: black !important;
+    }
+
+.nav-link {
+    border: 1px solid gray;
+    background: rgb(0, 148, 255);
+    color: rgb(255, 255, 255) !important;
+    width: 250px;
+    border-radius: 5px;
+    text-align: center;
+}
