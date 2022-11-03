@@ -1,4 +1,6 @@
-﻿namespace BankSystem.Domain.Models;
+﻿using BankSystem.Domain.Models.Enum;
+
+namespace BankSystem.Domain.Models;
 
 public class UserAccount 
 {
@@ -12,7 +14,7 @@ public class UserAccount
 
     public decimal Amount { get; set; }
 
-    public string Currency { get; set; }
+    public Currency Currency { get; set; }
 
     public IList<CreditCard> CreditCards { get; set; }
 }
