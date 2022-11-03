@@ -17,11 +17,6 @@ public class CreditCardRepository : BaseRepository<CreditCard>, ICreditCardRepos
         return await Table.Where(x => x.UserId == key).ToListAsync();
     }
 
-    public async Task<CreditCard> GetCardWithNumberAndPin(string number, string pin)
-    {
-        return await Table.Where(x => x.CardNumber == number && x.Pin == pin).SingleOrDefaultAsync();
-    }
-
     public async Task<List<CreditCard>> GetExpiredCards()
     {
         return await Table.Where(x => x.CardExpireDate < DateTime.Now).ToListAsync();
