@@ -1,6 +1,6 @@
 ﻿namespace CredoATM.Models;
 
-public class Withdrawal
+public class Withdraw
 {
     public decimal WithdrawAmount { get; set; }
 }
