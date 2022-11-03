@@ -32,7 +32,7 @@
                     @Html.DisplayFor(modelItem => item.Currency)
                 </th>
                 <th>
-                    @Html.ActionLink("ანგარიშის არჩევა","SendToMe")
+                    @Html.ActionLink("ანგარიშის არჩევა","HowMuchMoney",new {Id=item.Id})
                 </th>
             </tr>
         }
