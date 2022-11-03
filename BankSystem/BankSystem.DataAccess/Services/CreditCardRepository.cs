@@ -2,7 +2,6 @@
 using BankSystem.Domain.Models;
 using BankSystem.PersistenceDB.Context;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace BankSystem.DataAccess.Services;
 public class CreditCardRepository : BaseRepository<CreditCard>, ICreditCardRepository
@@ -15,6 +14,21 @@ public class CreditCardRepository : BaseRepository<CreditCard>, ICreditCardRepos
 
     public async Task<List<CreditCard>> GetAllCreditCard(string key)
     {
-      return await Table.Where(x => x.UserId == key).ToListAsync();
+        return await Table.Where(x => x.UserId == key).ToListAsync();
+    }
+
+    public async Task<CreditCard> GetCardWithNumberAndPin(string number, string pin)
+    {
+        return await Table.Where(x => x.CardNumber == number && x.Pin == pin).SingleOrDefaultAsync();
+    }
+
+    public async Task<List<CreditCard>> GetExpiredCards()
+    {
+        return await Table.Where(x => x.CardExpireDate < DateTime.Now).ToListAsync();
+    }
+
+    public async Task<List<CreditCard>> GetReplaceableCards()
+    {
+        return await Table.Where(x => x.CardExpireDate < DateTime.Now.AddDays(90)).ToListAsync();
     }
 }
