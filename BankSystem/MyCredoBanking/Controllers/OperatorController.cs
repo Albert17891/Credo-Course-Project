@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MyCredoBanking.Models.Request;
 using MyCredoBanking.Models.Response;
 using MyCredoBanking.Service.Abstractions;
@@ -57,9 +58,14 @@ public class OperatorController : Controller
     [HttpPost]
     public async Task<IActionResult> CreateUserAccount(UserAccountRequest userAccountRequest)
     {
-       await  _operatorService.AddBankAccountForUser(userAccountRequest.Adapt<UserAccountServiceModel>());
+        if (ModelState.IsValid)
+        {
+            await _operatorService.AddBankAccountForUser(userAccountRequest.Adapt<UserAccountServiceModel>());
+            return RedirectToAction("Operator");
+        }
 
-        return RedirectToAction("Operator");
+
+        return RedirectToAction("Error","Home");
     }
 
     [Route("GetUserCards")]

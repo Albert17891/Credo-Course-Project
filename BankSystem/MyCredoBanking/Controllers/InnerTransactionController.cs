@@ -1,5 +1,6 @@
 ﻿using BankSystem.Domain.Models;
 using Mapster;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MyCredoBanking.Infrastracture.ServiceCollectionExtensions;
@@ -9,15 +10,20 @@ using MyCredoBanking.Service.Abstractions;
 using MyCredoBanking.Service.Model;
 
 namespace MyCredoBanking.Controllers;
+
+[Authorize(Roles ="User")]
 public class InnerTransactionController : Controller
 {
     private readonly UserManager<AppUser> _userManger;
     private readonly IUserService _userService;
+    private readonly ITransactionHelperService _transactionHelper;
 
-    public InnerTransactionController(UserManager<AppUser> userManager, IUserService userService)
+    public InnerTransactionController(UserManager<AppUser> userManager, IUserService userService
+        ,ITransactionHelperService transactionHelper)
     {
         _userManger = userManager;
         _userService = userService;
+        _transactionHelper = transactionHelper;
     }
 
 
@@ -25,11 +31,11 @@ public class InnerTransactionController : Controller
     [HttpGet]
     public async Task<IActionResult> GetFirstAccount()
     {
-        var user = await _userManger.FindByNameAsync(User.Identity?.Name);
-        var account = await _userService.GetAllAccount(user.Id);
-        if (account is not null)
+
+        var accounts =await _transactionHelper.GetAccounts(_userManger, User.Identity.Name);
+        if (accounts is not null)
         {
-            return View(account.Adapt<List<UserAccountResponse>>());
+            return View(accounts.Adapt<List<UserAccountResponse>>());
         }
         return View();
     }
@@ -48,36 +54,32 @@ public class InnerTransactionController : Controller
     {
         TempData.Put("Amount", howMuch.Amount);
 
-        var user = await _userManger.FindByNameAsync(User.Identity?.Name);
-        var allAccounts = await _userService.GetAllAccount(user.Id);
-
         var firstAccountId = (int)TempData["FirstAccountId"];
-        TempData["FirstAccountId"] = firstAccountId;
 
-        var accounts = allAccounts.Where(x => x.Id != firstAccountId);
+        var allAccounts = await _transactionHelper.GetAccounts(_userManger,User.Identity.Name, firstAccountId);
+        
+        TempData["FirstAccountId"] = firstAccountId;        
 
-        if (accounts is not null)
+        if (allAccounts is not null)
         {
-            return View(accounts.Adapt<List<UserAccountResponse>>());
+            return View(allAccounts.Adapt<List<UserAccountResponse>>());
         }
         return View();
     }
 
     public async Task<IActionResult> SendToMe(int Id)
     {
-
-
        
 
         var transaction = new Transaction()
         {
             SenderAccountId= (int)TempData["FirstAccountId"],
-             ReciverAccountId= Id,
+             RecieverAccountId= Id,
             Amount = TempData.Get<decimal>("Amount")
         };
 
-        await _userService.InnerTransaction(transaction.Adapt<TransactionServiceModel>());
-        return Ok();
+        await _userService.Transaction(transaction.Adapt<TransactionServiceModel>());
+        return RedirectToAction("Index","User");
     }
 
 
