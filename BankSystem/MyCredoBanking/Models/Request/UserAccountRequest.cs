@@ -5,7 +5,7 @@ namespace MyCredoBanking.Models.Request;
 public class UserAccountRequest
 {
     public int Id { get; set; }
-    public string UserId { get; set; }  
+    public string UserId { get; set; }
     public string Iban { get; set; }
     [Required]
     public decimal Amount { get; set; }

@@ -47,9 +47,9 @@
                
 
                 <td>
-                    @Html.ActionLink("ანგარიშები", "GetMyAccounts","UserController", new {  Id=item.Id})
-                    @Html.ActionLink("ანგარიშის დამატება ", "UserAccount", new { id=item.Id})
-                   @* @Html.ActionLink("მომხმარებლის წაშლა", "DeleteUser", new {  id=item.Id})*@
+                    @Html.ActionLink("ანგარიშები", "GetUserAccounts", new {  Id=item.Id})
+                    @Html.ActionLink("ბარათები","GetUserCards", new { id=item.Id})
+                    @Html.ActionLink("ანგარიშის დამატება ", "UserAccount", new { id=item.Id})                   
                 </td>
             </tr>
         }
