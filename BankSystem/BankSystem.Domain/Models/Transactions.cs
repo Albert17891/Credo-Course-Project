@@ -18,7 +18,7 @@ public class Transactions
 
     public DateTime TransactionDate { get; set; }
 
-    public decimal TransactionIncome { get; set; }
+    public string Currency { get; set; }
 
     public TransactionType TransactionType { get; set; }
 }
