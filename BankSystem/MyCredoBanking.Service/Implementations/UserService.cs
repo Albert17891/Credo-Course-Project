@@ -4,6 +4,7 @@ using BankSystem.Domain.Models.Enum;
 using Mapster;
 using MyCredoBanking.Service.Abstractions;
 using MyCredoBanking.Service.Model;
+using MyCredoBanking.Service.nbgApi;
 
 namespace MyCredoBanking.Service.Implementations;
 
@@ -30,23 +31,45 @@ public class UserService : IUserService
         return result.Adapt<IList<CreditCardServiceModel>>();
     }
 
-    public async Task InnerTransaction(TransactionServiceModel transaction)
+    public async Task Transaction(TransactionServiceModel transaction)
     {
+        var senderAccount = await _context.userAccountRepository.GetByKeyAsync(transaction.SenderAccountId);
+        var recieverAccount = await _context.userAccountRepository.GetByKeyAsync(transaction.RecieverAccountId);
+
+        if (senderAccount == null) throw new NullReferenceException(nameof(senderAccount));
+        if (recieverAccount == null) throw new NullReferenceException(nameof(recieverAccount));
+        // to do
         var result = transaction.Adapt<Transactions>();
 
+        result.ReceiverUserId = recieverAccount.UserId;
+        result.UserId = senderAccount.UserId;
+        result.TransferAmount = transaction.Amount;
+
+        // ტრანზაქციის ტიპის დადგენა Inner or Outer.
         ConfigureTrans(ref result);
 
-        var Sender = await _context.userAccountRepository.GetByKeyAsync();
+        // გამგზავნის ანგარიშიდან ჩამოსაჭრელი მთლიანი თანხა.
+        var TotalTransfer = result.TransferAmount + result.TransferFee;
 
-        var reciever = await _context.userAccountRepository.GetByKeyAsync();
+        if (senderAccount.Amount < TotalTransfer) throw new InvalidOperationException("Not Enough Balance");
 
-        if (Sender == null) throw new NullReferenceException(nameof(Sender));
+        senderAccount.Amount -= TotalTransfer;
 
-        if (reciever == null) throw new NullReferenceException(nameof(reciever));
+        // კონვერტაცია
+        if (senderAccount.Currency != recieverAccount.Currency)
+        {
+            var currencyRates = await Client.GetRates();
 
-        if (Sender.Amount < transaction.TransferAmount + transaction.TransferFee) throw new InvalidOperationException("Not Enough Balance");
+            var valute = currencyRates.currencies.Where(x => x.code == recieverAccount.Currency).FirstOrDefault();
 
-        Sender.Amount -= reciever.Amount + result.TransferFee;
+            if (valute == null) throw new InvalidOperationException(nameof(valute));
+
+            TotalTransfer *= valute.rate;
+        }
+
+        recieverAccount.Amount += TotalTransfer;
+
+        result.Currency = senderAccount.Currency;
 
         await _context.transactionRepository.AddEntityAsync(result);
 
@@ -59,13 +82,13 @@ public class UserService : IUserService
         {
             transaction.TransactionType = TransactionType.InnerTransaction;
             transaction.TransferFee = 0;
-            transaction.TransactionIncome = 0;
         }
         else
         {
             transaction.TransactionType = TransactionType.OuterTransaction;
-            transaction.TransferFee = transaction.TransferAmount * 0.01m + 1;
-            transaction.TransactionIncome = transaction.TransferFee;
+            transaction.TransferFee = transaction.TransferAmount * 0.01m + 0.5m;
         }
+        transaction.TransactionDate = DateTime.Now;
+
     }
 }
