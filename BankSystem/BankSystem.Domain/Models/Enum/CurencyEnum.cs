@@ -1,4 +1,4 @@
-﻿namespace MyCredoBanking.Models;
+﻿namespace BankSystem.Domain.Models.Enum;
 
 public enum Currency
 {
@@ -6,3 +6,4 @@ public enum Currency
     USD,
     EURO
 }
+

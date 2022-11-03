@@ -1,5 +1,4 @@
-﻿
-using MyCredoBanking.Service.Model;
+﻿using MyCredoBanking.Service.Model;
 
 namespace MyCredoBanking.Service.Abstractions;
 
