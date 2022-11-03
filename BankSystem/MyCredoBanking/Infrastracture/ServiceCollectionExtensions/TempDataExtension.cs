@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 
 namespace MyCredoBanking.Infrastracture.ServiceCollectionExtensions;
