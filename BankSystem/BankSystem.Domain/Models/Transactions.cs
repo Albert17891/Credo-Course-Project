@@ -10,7 +10,7 @@ public class Transactions
 
     public AppUser User { get; set; }
 
-    public string ReceiverUserId { get; set; }
+    public string? ReceiverUserId { get; set; }
 
     public decimal TransferFee { get; set; }
 
