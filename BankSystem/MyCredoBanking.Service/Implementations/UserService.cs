@@ -43,31 +43,34 @@ public class UserService : IUserService
 
         result.ReceiverUserId = recieverAccount.UserId;
         result.UserId = senderAccount.UserId;
-        result.TransferAmount = transaction.Amount;
+        result.TransferAmount = transaction.Amount;//????
 
         // ტრანზაქციის ტიპის დადგენა Inner or Outer.
         ConfigureTrans(ref result);
 
         // გამგზავნის ანგარიშიდან ჩამოსაჭრელი მთლიანი თანხა.
-        var TotalTransfer = result.TransferAmount + result.TransferFee;
+        var senderLost = result.TransferAmount + result.TransferFee;
 
-        if (senderAccount.Amount < TotalTransfer) throw new InvalidOperationException("Not Enough Balance");
+        if (senderAccount.Amount < senderLost) throw new InvalidOperationException("Not Enough Balance");
 
-        senderAccount.Amount -= TotalTransfer;
+        senderAccount.Amount -= senderLost;
+
+        // ჩასარიცხი თანხა.
+        var recieverGet = transaction.Amount;
 
         // კონვერტაცია
         if (senderAccount.Currency != recieverAccount.Currency)
         {
-            var currencyRates = await Client.GetRates();
+            var senderCurrencyRate = senderAccount.Currency == Currency.GEL ? 1m : Client.GetRate(senderAccount.Currency.ToString());
 
-            var valute = currencyRates.currencies.Where(x => x.code == recieverAccount.Currency).FirstOrDefault();
+            var recieverCurrencyRate = recieverAccount.Currency == Currency.GEL ? 1m : Client.GetRate(senderAccount.Currency.ToString());
+            
+            var neededRate = senderCurrencyRate / recieverCurrencyRate;
 
-            if (valute == null) throw new InvalidOperationException(nameof(valute));
-
-            TotalTransfer *= valute.rate;
+            recieverGet *= neededRate;
         }
 
-        recieverAccount.Amount += TotalTransfer;
+        recieverAccount.Amount += recieverGet;
 
         result.Currency = senderAccount.Currency;
 

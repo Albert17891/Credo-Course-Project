@@ -13,7 +13,7 @@ public static class Client
 {
     private static readonly HttpClient _httpClient = new HttpClient();
 
-    public static Task<ResponseModel> GetRates()
+    public static decimal GetRate(string currency)
     {
         var URL = $"https://nbg.gov.ge/gw/api/ct/monetarypolicy/currencies/ka/json/?date={DateTime.Now.ToString("yyyy/MM/dd")}";
 
@@ -26,16 +26,18 @@ public static class Client
 
         var result = response.GetAwaiter().GetResult();
 
-        if (result.StatusCode == HttpStatusCode.OK)
-        {
-            var responseData = result.Content.ReadAsStringAsync();
+        if (result.StatusCode == HttpStatusCode.OK) throw new OperationCanceledException("HTTP request was not successful");
 
-            var returnResult = JsonSerializer.Deserialize<ResponseModel>(responseData.Result);
+        var responseData = result.Content.ReadAsStringAsync();
 
-            return Task.FromResult(returnResult);
+        // ყველა ვალუტა.
+        var currencies = JsonSerializer.Deserialize<IList<ResponseModel>>(responseData.Result)
+            ?? throw new NullReferenceException("Curencys deserialize problem");
 
-        }
-        return Task.FromResult<ResponseModel>(null);
+        // საჭირო ვალუტის ამოღება.
+        var returnResult = currencies[0].currencies.Where(x => x.code == currency).FirstOrDefault()
+            ?? throw new NullReferenceException("Curency did not matched."); ;
 
+        return returnResult.rate;
     }
 }
