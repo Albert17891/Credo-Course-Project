@@ -9,35 +9,24 @@ using MyCredoBanking.Models.Request;
 using MyCredoBanking.Models.Response;
 using MyCredoBanking.Models.Transaction;
 using MyCredoBanking.Service.Abstractions;
+using MyCredoBanking.Service.Model;
 
 namespace MyCredoBanking.Controllers;
 
 [Authorize(Roles ="User")]
-public class TransactionController : Controller
+public class OutherTransactionController : Controller
 {
     private readonly UserManager<AppUser> _userManger;
     private readonly IUserService _userService;
 
   
-    public TransactionController(UserManager<AppUser> userManager,IUserService userService)
+    public OutherTransactionController(UserManager<AppUser> userManager,IUserService userService)
     {
         _userManger = userManager;
         _userService = userService;
     }
 
-    [Route("SendToMe")]
-    [HttpGet]
-    public async Task<IActionResult> SendToMe()
-    {
-        var user = await _userManger.FindByNameAsync(User.Identity?.Name);
-        var account = await _userService.GetAllAccount(user.Id);
-        if (account is not null)
-        {
-            return View(account.Adapt<List<UserAccountResponse>>());
-        }
-        return View();
-    }
-  
+    
     [HttpGet]
     public IActionResult GetIdNumber()
     {
@@ -93,6 +82,7 @@ public class TransactionController : Controller
             SenderAccountId = Id,
             Amount = TempData.Get<decimal>("Amount")
         };
+      await  _userService.InnerTransaction(transaction.Adapt<TransactionServiceModel>());
 
         return Ok();
     }
