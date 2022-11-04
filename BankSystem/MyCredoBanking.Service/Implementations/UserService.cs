@@ -31,13 +31,11 @@ public class UserService : IUserService
         return result.Adapt<IList<CreditCardServiceModel>>();
     }
 
-    public async Task Transaction(TransactionServiceModel transaction)
+    public async Task<bool> Transaction(TransactionServiceModel transaction)
     {
         var senderAccount = await _context.userAccountRepository.GetByKeyAsync(transaction.SenderAccountId);
         var recieverAccount = await _context.userAccountRepository.GetByKeyAsync(transaction.RecieverAccountId);
 
-        if (senderAccount == null) throw new NullReferenceException(nameof(senderAccount));
-        if (recieverAccount == null) throw new NullReferenceException(nameof(recieverAccount));
         // to do
         var result = transaction.Adapt<Transactions>();
 
@@ -51,7 +49,7 @@ public class UserService : IUserService
         // გამგზავნის ანგარიშიდან ჩამოსაჭრელი მთლიანი თანხა.
         var senderLost = result.TransferAmount + result.TransferFee;
 
-        if (senderAccount.Amount < senderLost) throw new InvalidOperationException("Not Enough Balance");
+        if (senderAccount.Amount < senderLost) return false;
 
         senderAccount.Amount -= senderLost;
 
@@ -77,6 +75,8 @@ public class UserService : IUserService
         await _context.transactionRepository.AddEntityAsync(result);
 
         _context.Complete();
+
+        return true;
     }
 
     private static void ConfigureTrans(ref Transactions transaction)

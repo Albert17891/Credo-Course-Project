@@ -4,7 +4,7 @@ namespace MyCredoBanking.Service.Abstractions;
 
 public interface IUserService
 {
-    Task Transaction(TransactionServiceModel transaction);
+    Task<bool> Transaction(TransactionServiceModel transaction);
 
     Task<IList<CreditCardServiceModel>> GetAllCard(string userId);
 
