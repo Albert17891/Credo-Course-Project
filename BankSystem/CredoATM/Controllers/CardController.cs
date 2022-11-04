@@ -1,7 +1,6 @@
 ﻿using AtmCredoBanking.Service.Abstractions;
 using CredoATM.Infastructure.ServiceCollectionExtensions;
 using CredoATM.Models;
-using Mapster;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CredoATM.Controllers;
@@ -15,16 +14,18 @@ public class CardController : Controller
     }
     public IActionResult Index()
     {
-        return View();
+        var card = HttpContext.Session.Get<CreditCardAtm>("CreditCart");
+
+        return View(new Check { ResultOfCheck = card.Replaceable });
     }
 
     public async Task<IActionResult> CheckBalance()
     {
-        var cart = HttpContext.Session.Get<CreditCardAtm>("CreditCart");
-        var amount = await _cardService.ShowBalance(cart.UserAccountId);
+        var card = HttpContext.Session.Get<CreditCardAtm>("CreditCart");
+        var amount = await _cardService.ShowBalance(card.UserAccountId);
 
 
-        return View(new Balance { Amount=amount});
+        return View(new Balance { Amount = amount });
     }
 
     [HttpGet]
@@ -36,8 +37,8 @@ public class CardController : Controller
     [HttpPost]
     public async Task<IActionResult> ChangePin(ChangePin changePin)
     {
-        var cart = HttpContext.Session.Get<CreditCardAtm>("CreditCart");
-        await _cardService.ChangePin(cart.Id, changePin.Pin);
+        var card = HttpContext.Session.Get<CreditCardAtm>("CreditCart");
+        await _cardService.ChangePin(card.Id, changePin.Pin);
 
         return RedirectToAction("Index");
     }
@@ -52,9 +53,17 @@ public class CardController : Controller
     [HttpPost]
     public async Task<IActionResult> Withdrawal(Balance balance)
     {
-        var cart = HttpContext.Session.Get<CreditCardAtm>("CreditCart");
-        await _cardService.WithDraw(cart.UserAccountId, balance.Amount);
+        var card = HttpContext.Session.Get<CreditCardAtm>("CreditCart");
+        if (await _cardService.WithDraw(card.UserAccountId, balance.Amount))
+        {
+            return RedirectToAction("Index");
+        }
 
-        return RedirectToAction("Index");
+        return RedirectToAction("NoEnoughMoney");
+    }
+
+    public IActionResult NoEnoughMoney()
+    {
+        return View();
     }
 }

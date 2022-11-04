@@ -27,6 +27,12 @@ public class AccountController : Controller
             HttpContext.Session.Set<CreditCardAtm>("CreditCart", result.Adapt<CreditCardAtm>());
             return RedirectToAction("Index", "Card");
         }
-        return RedirectToAction("Error", "Home");
+
+        return RedirectToAction("ExpiredCard");
+    }
+
+    public IActionResult ExpiredCard()
+    {
+        return View();
     }
 }
