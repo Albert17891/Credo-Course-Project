@@ -1,0 +1,21 @@
+﻿
+<div class="text-left">
+    <h1 class="display-4">მომხმარებლების სტატისტიკა</h1>
+</div>
+
+<ul>
+    <li class="nav-item">
+        @Html.ActionLink("მიმდინარე წელს დარეგისტრირებული მომხმარებლების რაოდენობა"," GetUserQuantity")
+    </li>
+
+    <li class="nav-item">
+        @Html.ActionLink("ბოლო ერთი წლის განმავლობაში დარეგისტრირებული მომხმარებლების რაოდენობა","GetUserQuantityFromOneYear")
+
+    </li>
+
+    <li class="nav-item">
+        @Html.ActionLink("ბოლო 30 დღეში დარეგისტრირებული მომხმარებლების რაოდენობა","GetUserQuantityFromPerMonth")
+    </li>
+
+   
+</ul>
