@@ -13,7 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCredoBanking", "MyCredoBa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankSystem.Domain", "BankSystem.Domain\BankSystem.Domain.csproj", "{FFC602AA-1D12-4148-BACA-E703BB88646D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CredoATM", "CredoATM\CredoATM.csproj", "{30E94401-9FF0-44A3-8871-E1DA436E8C7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AtmCredoBanking.Service", "ATMCredoBanking.Service\AtmCredoBanking.Service.csproj", "{7A42D624-895F-4FC8-B6E9-2DDBA8C41024}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CredoReport", "CredoReport\CredoReport.csproj", "{3AEE7DD8-B286-47A0-98F0-E48AEC917789}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CredoATM", "CredoATM\CredoATM.csproj", "{086777BC-3890-42A6-96A6-25579E187AD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CredoReport.Service", "CredoReport.Service\CredoReport.Service.csproj", "{0A9A6081-66B8-4089-9A1E-E9CC331719A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +47,22 @@ Global
 		{FFC602AA-1D12-4148-BACA-E703BB88646D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFC602AA-1D12-4148-BACA-E703BB88646D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFC602AA-1D12-4148-BACA-E703BB88646D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{30E94401-9FF0-44A3-8871-E1DA436E8C7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30E94401-9FF0-44A3-8871-E1DA436E8C7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{30E94401-9FF0-44A3-8871-E1DA436E8C7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{30E94401-9FF0-44A3-8871-E1DA436E8C7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A42D624-895F-4FC8-B6E9-2DDBA8C41024}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A42D624-895F-4FC8-B6E9-2DDBA8C41024}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A42D624-895F-4FC8-B6E9-2DDBA8C41024}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A42D624-895F-4FC8-B6E9-2DDBA8C41024}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AEE7DD8-B286-47A0-98F0-E48AEC917789}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AEE7DD8-B286-47A0-98F0-E48AEC917789}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AEE7DD8-B286-47A0-98F0-E48AEC917789}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AEE7DD8-B286-47A0-98F0-E48AEC917789}.Release|Any CPU.Build.0 = Release|Any CPU
+		{086777BC-3890-42A6-96A6-25579E187AD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{086777BC-3890-42A6-96A6-25579E187AD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{086777BC-3890-42A6-96A6-25579E187AD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{086777BC-3890-42A6-96A6-25579E187AD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A9A6081-66B8-4089-9A1E-E9CC331719A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A9A6081-66B8-4089-9A1E-E9CC331719A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A9A6081-66B8-4089-9A1E-E9CC331719A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A9A6081-66B8-4089-9A1E-E9CC331719A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

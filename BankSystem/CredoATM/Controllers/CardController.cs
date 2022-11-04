@@ -1,17 +1,17 @@
-﻿using CredoATM.Infastructure.ServiceCollectionExtensions;
+﻿using AtmCredoBanking.Service.Abstractions;
+using CredoATM.Infastructure.ServiceCollectionExtensions;
 using CredoATM.Models;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
-using MyCredoBanking.Service.Abstractions;
 
 namespace CredoATM.Controllers;
 public class CardController : Controller
 {
-    private readonly IUserService _userService;
+    private readonly ICardService _cardService;
 
-    public CardController(IUserService userService)
+    public CardController(ICardService cardService)
     {
-        _userService = userService;
+        _cardService = cardService;
     }
     public IActionResult Index()
     {
@@ -20,12 +20,11 @@ public class CardController : Controller
 
     public async Task<IActionResult> CheckBalance()
     {
-        var cart = HttpContext.Session.Get<CreditCardResponse>("CreditCart");
-        var account =await _userService.GetAccountById(cart.UserAccountId);    
-        
-       
+        var cart = HttpContext.Session.Get<CreditCardAtm>("CreditCart");
+        var amount = await _cardService.ShowBalance(cart.UserAccountId);
 
-        return View(account.Adapt<Balance>());
+
+        return View(new Balance { Amount=amount});
     }
 
     [HttpGet]
@@ -35,15 +34,17 @@ public class CardController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> ChangePin(ChangePin pin)
+    public async Task<IActionResult> ChangePin(ChangePin changePin)
     {
+        var cart = HttpContext.Session.Get<CreditCardAtm>("CreditCart");
+        await _cardService.ChangePin(cart.Id, changePin.Pin);
 
-        return View();
+        return RedirectToAction("Index");
     }
 
-    [Route("Withdrawal")]
+    [Route("Withdraw")]
     [HttpGet]
-    public IActionResult Withdrawal()
+    public IActionResult Withdraw()
     {
         return View();
     }
@@ -51,6 +52,9 @@ public class CardController : Controller
     [HttpPost]
     public async Task<IActionResult> Withdrawal(Balance balance)
     {
-        return Ok();
+        var cart = HttpContext.Session.Get<CreditCardAtm>("CreditCart");
+        await _cardService.WithDraw(cart.UserAccountId, balance.Amount);
+
+        return RedirectToAction("Index");
     }
 }

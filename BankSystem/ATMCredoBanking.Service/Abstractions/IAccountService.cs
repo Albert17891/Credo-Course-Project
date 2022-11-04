@@ -1,6 +1,8 @@
-﻿namespace AtmCredoBanking.Service.Abstractions;
+﻿using AtmCredoBanking.Service.Models;
+
+namespace AtmCredoBanking.Service.Abstractions;
 
 public interface IAccountService 
 {
-    Task<bool> CheckCard(string creditCardNumber, string pin);
+    Task<CardAtmServiceModel> CheckCard(string creditCardNumber, string pin);
 }

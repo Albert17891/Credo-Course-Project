@@ -1,19 +1,12 @@
 using CredoATM.Infrastracture.ServiceCollectionExtensions;
-using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-var configuration = builder.Configuration;
-
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddRepositoryServcies();
+builder.Services.AddContext(builder.Configuration);
 builder.Services.AddServicesExtension();
-builder.Services.AddContext(configuration);
-
-
-builder.Services.AddMemoryCache();
+builder.Services.AddRepositoryServcies();
 
 builder.Services.AddSession(opt =>
 {

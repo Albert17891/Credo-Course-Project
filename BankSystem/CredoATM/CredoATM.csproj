@@ -7,11 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MyCredoBanking.Service\MyCredoBanking.Service.csproj" />
+    <ProjectReference Include="..\ATMCredoBanking.Service\AtmCredoBanking.Service.csproj" />
+    <ProjectReference Include="..\BankSystem.PersistenceDB\BankSystem.PersistenceDB.csproj" />
   </ItemGroup>
 
 </Project>

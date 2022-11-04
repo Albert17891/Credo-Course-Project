@@ -1,32 +1,32 @@
-﻿using CredoATM.Infastructure.ServiceCollectionExtensions;
+﻿using AtmCredoBanking.Service.Abstractions;
+using CredoATM.Infastructure.ServiceCollectionExtensions;
 using CredoATM.Models;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
-using MyCredoBanking.Service.Abstractions;
 
 namespace CredoATM.Controllers;
 public class AccountController : Controller
 {
-    private readonly IUserService _userService;
+    private readonly IAccountService _accountService;
 
-    public AccountController(IUserService userService)
+    public AccountController(IAccountService accountService)
     {
-        _userService = userService;
+        _accountService = accountService;
     }
     public IActionResult CreditCardLogin()
     {
         return View();
     }
 
-    public async Task<IActionResult>CheckCard(CreditCardLogin creditCard)
+    public async Task<IActionResult> CheckCard(CreditCardLogin creditCard)
     {
-        var result = await _userService.CheckCardService(creditCard.CreditCartNumber, creditCard.Pin);
+        var result = await _accountService.CheckCard(creditCard.CreditCartNumber, creditCard.Pin);
 
-        if(result is not null)
+        if (result is not null)
         {
-            HttpContext.Session.Set<CreditCardResponse>("CreditCart", result.Adapt<CreditCardResponse>() );
+            HttpContext.Session.Set<CreditCardAtm>("CreditCart", result.Adapt<CreditCardAtm>());
             return RedirectToAction("Index", "Card");
         }
-        return RedirectToAction("Error","Home");
+        return RedirectToAction("Error", "Home");
     }
 }
