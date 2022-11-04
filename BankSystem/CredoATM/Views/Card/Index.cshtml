@@ -1,11 +1,18 @@
-﻿@{
+﻿@model Check
+
+@{
     ViewData["Title"] = "Card Page";
 }
 
 <div class="text-left">
     <h1 class="display-4">მოგესალმებით </h1>
 </div>
-
+@if (Model.ResultOfCheck)
+{
+    <div>
+        <h1>თქბენი ბარათის ვადა იწურება 3 თვეში გთხოვთ შეიცვალოთ</h1>
+    </div>
+}
 <ul>
     <li class="nav-item">
         <a class="nav-link text-dark" asp-area="" asp-controller="Card" asp-action="CheckBalance">ბალანსი</a>

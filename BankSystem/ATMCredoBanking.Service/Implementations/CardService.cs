@@ -31,7 +31,7 @@ public class CardService : ICardService
 
     }
 
-    public async Task WithDraw(int acountId, decimal amount)
+    public async Task<bool> WithDraw(int acountId, decimal amount)
     {
         var account = await _context.userAccountRepository.GetByKeyAsync(acountId);
 
@@ -39,7 +39,7 @@ public class CardService : ICardService
 
         var totalmoney = amount + fee;
 
-        if (account.Amount < totalmoney) throw new InvalidOperationException("Not enough money");
+        if (account.Amount < totalmoney) return false;
 
         account.Amount -= totalmoney;
 
@@ -54,5 +54,7 @@ public class CardService : ICardService
         });
 
         _context.Complete();
+
+        return true;
     }
 }

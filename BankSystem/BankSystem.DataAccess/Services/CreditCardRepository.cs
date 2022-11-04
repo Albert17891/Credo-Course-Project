@@ -17,13 +17,18 @@ public class CreditCardRepository : BaseRepository<CreditCard>, ICreditCardRepos
         return await Table.Where(x => x.UserId == key).ToListAsync();
     }
 
-    public async Task<List<CreditCard>> GetExpiredCards()
+    public async Task<bool> CheckExpiredCards(int Id)
     {
-        return await Table.Where(x => x.CardExpireDate < DateTime.Now).ToListAsync();
+        return await Table.Where(x => x.Id == Id)
+                          .Select(x => x.CardExpireDate < DateTime.Now)
+                          .SingleOrDefaultAsync();
     }
 
-    public async Task<List<CreditCard>> GetReplaceableCards()
+    public async Task<bool> CheckReplaceableCards(int Id)
     {
-        return await Table.Where(x => x.CardExpireDate < DateTime.Now.AddDays(90)).ToListAsync();
+        return await Table.Where(x => x.Id == Id)
+                          .Select(x => x.CardExpireDate < DateTime.Now.AddDays(90))
+                          .SingleOrDefaultAsync();
+        
     }
 }

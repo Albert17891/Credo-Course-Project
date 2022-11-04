@@ -4,7 +4,7 @@ public interface ICardService
 {
     Task ChangePin(int cardId, string pin);
 
-    Task WithDraw(int acountId, decimal balace);
+    Task<bool> WithDraw(int acountId, decimal balace);
 
     Task<decimal> ShowBalance(int acountId);
 }

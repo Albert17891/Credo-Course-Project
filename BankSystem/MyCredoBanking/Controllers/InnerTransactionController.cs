@@ -11,7 +11,7 @@ using MyCredoBanking.Service.Model;
 
 namespace MyCredoBanking.Controllers;
 
-[Authorize(Roles ="User")]
+[Authorize(Roles = "User")]
 public class InnerTransactionController : Controller
 {
     private readonly UserManager<AppUser> _userManger;
@@ -19,7 +19,7 @@ public class InnerTransactionController : Controller
     private readonly ITransactionHelperService _transactionHelper;
 
     public InnerTransactionController(UserManager<AppUser> userManager, IUserService userService
-        ,ITransactionHelperService transactionHelper)
+        , ITransactionHelperService transactionHelper)
     {
         _userManger = userManager;
         _userService = userService;
@@ -32,7 +32,7 @@ public class InnerTransactionController : Controller
     public async Task<IActionResult> GetFirstAccount()
     {
 
-        var accounts =await _transactionHelper.GetAccounts(_userManger, User.Identity.Name);
+        var accounts = await _transactionHelper.GetAccounts(_userManger, User.Identity.Name);
         if (accounts is not null)
         {
             return View(accounts.Adapt<List<UserAccountResponse>>());
@@ -56,9 +56,9 @@ public class InnerTransactionController : Controller
 
         var firstAccountId = (int)TempData["FirstAccountId"];
 
-        var allAccounts = await _transactionHelper.GetAccounts(_userManger,User.Identity.Name, firstAccountId);
-        
-        TempData["FirstAccountId"] = firstAccountId;        
+        var allAccounts = await _transactionHelper.GetAccounts(_userManger, User.Identity.Name, firstAccountId);
+
+        TempData["FirstAccountId"] = firstAccountId;
 
         if (allAccounts is not null)
         {
@@ -69,19 +69,25 @@ public class InnerTransactionController : Controller
 
     public async Task<IActionResult> SendToMe(int Id)
     {
-       
 
         var transaction = new Transaction()
         {
-            SenderAccountId= (int)TempData["FirstAccountId"],
-             RecieverAccountId= Id,
+            SenderAccountId = (int)TempData["FirstAccountId"],
+            RecieverAccountId = Id,
             Amount = TempData.Get<decimal>("Amount")
         };
 
-        await _userService.Transaction(transaction.Adapt<TransactionServiceModel>());
-        return RedirectToAction("Index","User");
+        if (await _userService.Transaction(transaction.Adapt<TransactionServiceModel>()))
+        {
+            return RedirectToAction("Index", "User");
+        }
+
+        return RedirectToAction("NotEnoughMoney");
     }
 
-
+    public IActionResult NotEnoughMoney()
+    {
+        return View();
+    }
 
 }

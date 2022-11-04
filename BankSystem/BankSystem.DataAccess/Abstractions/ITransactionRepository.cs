@@ -4,9 +4,9 @@ namespace BankSystem.DataAccess.Abstractions;
 
 public interface ITransactionRepository : IBaseRepository<Transactions>
 {
-    Task<int> GetTransactionsOfMounth();
-    Task<int> GetTransactionsOfSixMounth();
-    Task<int> GetTransactionsOfYear();
+    Task<int> GetTransactionsQuantity(int Id);  
 
     Task<decimal> GetAtmWithdrawTotal();
+
+
 }
