@@ -12,6 +12,8 @@ public class AppUser : IdentityUser
 
     public DateTime BirthDate { get; set; }
 
+    public DateTime RegisterTime { get; set; } = DateTime.Now;
+
     public IList<Transactions> Transactions { get; set; }
 
     public IList<CreditCard> CreditCards { get; set; }
