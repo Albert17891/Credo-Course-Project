@@ -1,31 +1,40 @@
 ﻿using CredoReport.Models.TransactionStastistic;
+using CredoReport.Service.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CredoReport.Controllers;
 public class TransactionStatisticController : Controller
 {
+    private readonly ITransactionStatisticService _service;
+
+    public TransactionStatisticController(ITransactionStatisticService service)
+    {
+        _service = service;
+    }
     public IActionResult Index()
     {
         return View();
     }
 
     [Route("QuantityTransaction")]
-    [HttpGet("quantity")]
-    public async Task<IActionResult> QuantityTransaction(int quantity)
+    [HttpGet("choseType")]
+    public async Task<IActionResult> QuantityTransaction(int choseType)
     {
 
-        if (quantity == 30)
+        if (choseType == 30)
         {
-          
-            return View();
+            var result = await _service.GetTransactionsOfMounthService();
+            return View(new TransactionQuantity { Quantity = result });
         }
-        else if (quantity == 60)
+        else if (choseType == 60)
         {
-            return View();
+            var result = await _service.GetTransactionsOfSixMounthService() ;
+            return View(new TransactionQuantity { Quantity=result});
         }
         else
         {
-            return View();
+            var result = await _service.GetTransactionsOfYearService();
+            return View(new TransactionQuantity { Quantity = result });
         }
        
     }
@@ -36,8 +45,8 @@ public class TransactionStatisticController : Controller
       
         if(Id==30)
         {
-            var transFee = new TransactionFee() { QuantityGel = 120, QuantityUsd = 10, QuantityEuro = 30 };
-            return View(transFee);
+           
+            return View();
         }
         else if(Id==60)
         {
@@ -61,7 +70,8 @@ public class TransactionStatisticController : Controller
 
     public async Task<IActionResult> AtmMoneyQuantity()
     {
-        return View();
+        var result = await _service.GetAtmWithdrawTotalService();
+        return View(new MoneyQuantity { Quantity=result});
     }
 
 }

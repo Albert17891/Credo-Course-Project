@@ -1,27 +1,37 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CredoReport.Models.UserStatistic;
+using CredoReport.Service.Abstractions;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CredoReport.Controllers;
 public class UserStatisticController : Controller
 {
+    private readonly IUserStatisticService userStatistic;
+
+    public UserStatisticController(IUserStatisticService userStatistic)
+    {
+        this.userStatistic = userStatistic;
+    }
     public IActionResult Index()
     {
         return View();
     }
 
-    public async Task<IActionResult> GetUserQuantity()
+    public async Task<IActionResult> GetUserQuantityFromPerMonth()
     {
-        return Ok();
+        var result = await userStatistic.GetUsersOneMonthService();
+        return View(new UserQuantity { Quantity = result });
     }
 
     public async Task<IActionResult> GetUserQuantityFromOneYear()
     {
-        return Ok();
-
+        var result = await userStatistic.GetUsersFromThisYearService();
+        return View(new UserQuantity { Quantity = result });
     }
 
-    public async Task<IActionResult> GetUserQuantityFromPerMonth()
+    public async Task<IActionResult> GetUserQuantityFromThisYear()
     {
-        return Ok();
+        var result = await userStatistic.GetUsersFromOneYearService();
+        return View(new UserQuantity { Quantity = result });
 
     }
 }
