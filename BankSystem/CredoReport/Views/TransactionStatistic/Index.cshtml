@@ -1,0 +1,39 @@
+﻿<div class="text-left">
+    <h1 class="display-4">ტრანზაქციების სტატისტიკა</h1>
+</div>
+
+<ul>
+    <li class="nav-item">
+        @Html.ActionLink("ბოლო 1 თვეში განხორციელებული ტრანზაქციების რაოდენობა","QuantityTransaction",new {quantity=30})
+    </li>
+
+    <li class="nav-item">
+        @Html.ActionLink("ბოლო 6 თვეში ტრანზაქციების რაოდენობა","QuantityTransaction",new {quantity=60})
+
+    </li>
+
+    <li class="nav-item">
+        @Html.ActionLink("ბოლო 1 წელში განხორციელებული ტრანზაქციების რაოდენობა","QuantityTransaction",new {quantity=1})
+    </li>
+
+    <li class="nav-item">
+        @Html.ActionLink("ბოლო 1 თვეში ტრანზაქციებიდან მიღებული შემოსავალის მოცულობა (ლარში/დოლარში/ევროში)","TransactionFeeQuantity",new {Id=30})
+    </li>
+    <li class="nav-item">
+        @Html.ActionLink("ბოლო 6 თვეში ტრანზაქციებიდან მიღებული შემოსავალის მოცულობა (ლარში/დოლარში/ევროში)","TransactionFeeQuantity",new {Id=60})
+    </li>
+    <li class="nav-item">
+        @Html.ActionLink("ბოლო 1 წელში ტრანზაქციებიდან მიღებული შემოსავალის მოცულობა (ლარში/დოლარში/ევროში)","TransactionFeeQuantity",new {Id=1})
+    </li>
+    <li class="nav-item">
+        @Html.ActionLink("საშუალოდ ერთი ტრანზაქციიდან მიღებული შემოსავალი (ლარში/დოლარში/ევროში)","AverageTransactionFee")
+    </li>
+    <li class="nav-item">
+         @Html.ActionLink("ბოლო ერთ თვეში ტრანზაქციების რაოდენობა დღეების მიხედვით (ჩარტი)","")
+    </li>
+    <li class="nav-item">
+         @Html.ActionLink("ATM-დან გამოტანილი თანხის ჯამური რაოდენობა","")
+    </li>
+</ul>
+
+
