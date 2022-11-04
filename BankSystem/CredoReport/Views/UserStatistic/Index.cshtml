@@ -5,16 +5,16 @@
 
 <ul>
     <li class="nav-item">
-        @Html.ActionLink("მიმდინარე წელს დარეგისტრირებული მომხმარებლების რაოდენობა","GetUserQuantityFromOneYear")
+        @Html.ActionLink("მიმდინარე წელს დარეგისტრირებული მომხმარებლების რაოდენობა","GetUserQuantity",new {Id=180})
     </li>
 
     <li class="nav-item">
-        @Html.ActionLink("ბოლო ერთი წლის განმავლობაში დარეგისტრირებული მომხმარებლების რაოდენობა","GetUserQuantityFromOneYear")
+        @Html.ActionLink("ბოლო ერთი წლის განმავლობაში დარეგისტრირებული მომხმარებლების რაოდენობა","GetUserQuantity",new {Id=365})
 
     </li>
 
     <li class="nav-item">
-        @Html.ActionLink("ბოლო 30 დღეში დარეგისტრირებული მომხმარებლების რაოდენობა","GetUserQuantityFromPerMonth")
+        @Html.ActionLink("ბოლო 30 დღეში დარეგისტრირებული მომხმარებლების რაოდენობა","GetUserQuantity",new {Id=30})
     </li>
 
    

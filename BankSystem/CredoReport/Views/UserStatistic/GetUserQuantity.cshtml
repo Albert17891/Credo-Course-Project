@@ -1,13 +1,14 @@
 ﻿@model CredoReport.Models.UserStatistic.UserQuantity
 
 @{
-    ViewData["Title"] = "GetUserQuantityFromOneMonth";
+    ViewData["Title"] = "GetUserQuantity";
 }
 
-<h1>GetUserQuantityFromOneMonth</h1>
+<h1>GetUserQuantity</h1>
 
+<
 <div>
-    <h4>Quantity</h4>
+    <h4>UserQuantity</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -17,8 +18,9 @@
             @Html.DisplayFor(model => model.Quantity)
         </dd>
     </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+    
+    <form asp-action="GetUserQuantity">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
 </div>
