@@ -10,21 +10,12 @@ public class UserStatisticService:IUserStatisticService
 	public UserStatisticService(IContextWrapper contextWrapper)
 	{
 		_contextWrapper = contextWrapper;
-	}
+	}	
 
-	public async Task<int> GetUsersOneMonthService()
+	public Task<int> GetUsersQuantityService(int Id)
 	{
-		return await _contextWrapper.userRepository.GetUsersOfOneMonth();
+		throw new NotImplementedException();
 	}
-
-	public async Task<int> GetUsersFromOneYearService()
-	{
-        return await _contextWrapper.userRepository.GetUsersOfOneYear();
-    }
-    public async Task<int> GetUsersFromThisYearService()
-    {
-        return await _contextWrapper.userRepository.GetUsersOfThisYear();
-    }
 }
 
 
