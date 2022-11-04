@@ -17,6 +17,8 @@ public class AccountService : IAccountService
     {
         var checkCard = await _context.cardRepository.Table.Where(x => x.CardNumber == creditCardNumber && x.Pin == pin).SingleOrDefaultAsync();
 
+        if (checkCard.CardExpireDate < DateTime.Now) return false;
+
         if (checkCard == null) 
             return false;
 
