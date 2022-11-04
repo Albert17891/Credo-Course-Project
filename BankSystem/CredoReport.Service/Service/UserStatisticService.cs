@@ -12,9 +12,9 @@ public class UserStatisticService:IUserStatisticService
 		_contextWrapper = contextWrapper;
 	}	
 
-	public Task<int> GetUsersQuantityService(int Id)
+	public async Task<int> GetUsersQuantityService(int Id)
 	{
-		throw new NotImplementedException();
+		return await _contextWrapper.userRepository.GetUsersQuantity(Id);
 	}
 }
 
