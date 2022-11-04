@@ -16,22 +16,11 @@ public class UserStatisticController : Controller
         return View();
     }
 
-    public async Task<IActionResult> GetUserQuantityFromPerMonth()
+    [HttpGet("{Id}")]
+    public async Task<IActionResult> GetUserQuantity(int Id)
     {
         var result = await userStatistic.GetUsersOneMonthService();
         return View(new UserQuantity { Quantity = result });
     }
-
-    public async Task<IActionResult> GetUserQuantityFromOneYear()
-    {
-        var result = await userStatistic.GetUsersFromThisYearService();
-        return View(new UserQuantity { Quantity = result });
-    }
-
-    public async Task<IActionResult> GetUserQuantityFromThisYear()
-    {
-        var result = await userStatistic.GetUsersFromOneYearService();
-        return View(new UserQuantity { Quantity = result });
-
-    }
+    
 }

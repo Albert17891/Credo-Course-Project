@@ -81,8 +81,11 @@ public class OutherTransactionController : Controller
             SenderAccountId = Id,
             Amount = TempData.Get<decimal>("Amount")
         };
-        await _userService.Transaction(transaction.Adapt<TransactionServiceModel>());
+        if(await _userService.Transaction(transaction.Adapt<TransactionServiceModel>()))
+        {
+            return RedirectToAction("Index","User");
+        }
 
-        return Ok();
+        return RedirectToAction("NotEnoughMoney","InnerTransaction");
     }
 }

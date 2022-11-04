@@ -20,48 +20,20 @@ public class TransactionStatisticController : Controller
     [HttpGet("choseType")]
     public async Task<IActionResult> QuantityTransaction(int choseType)
     {
-
-        if (choseType == 30)
-        {
-            var result = await _service.GetTransactionsOfMounthService();
-            return View(new TransactionQuantity { Quantity = result });
-        }
-        else if (choseType == 60)
-        {
-            var result = await _service.GetTransactionsOfSixMounthService() ;
-            return View(new TransactionQuantity { Quantity=result});
-        }
-        else
-        {
-            var result = await _service.GetTransactionsOfYearService();
-            return View(new TransactionQuantity { Quantity = result });
-        }
-       
+        var result = await _service.GetTransactionsQuantityService(choseType);
+        return View(new TransactionQuantity { Quantity = result });
     }
-   [Route("TransactionFeeQuantity")]
+    [Route("TransactionFeeQuantity")]
     [HttpGet("Id")]
     public async Task<IActionResult> TransactionFeeQuantity(int Id)
     {
-      
-        if(Id==30)
-        {
-           
-            return View();
-        }
-        else if(Id==60)
-        {
-            return View();
-        }
-        else
-        {
-            return View();
-        }
-        return Ok();
+
+        return View();        
     }
 
     public async Task<IActionResult> AverageTransactionFee()
     {
-        
+
 
 
         return View();
@@ -71,7 +43,7 @@ public class TransactionStatisticController : Controller
     public async Task<IActionResult> AtmMoneyQuantity()
     {
         var result = await _service.GetAtmWithdrawTotalService();
-        return View(new MoneyQuantity { Quantity=result});
+        return View(new MoneyQuantity { Quantity = result });
     }
 
 }

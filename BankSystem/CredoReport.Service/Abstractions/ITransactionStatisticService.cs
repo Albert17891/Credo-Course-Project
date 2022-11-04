@@ -3,11 +3,7 @@
 namespace CredoReport.Service.Abstractions;
 public interface ITransactionStatisticService
 {
-    Task<int> GetTransactionsOfMounthService();
-
-    Task<int> GetTransactionsOfSixMounthService();
-
-    Task<int> GetTransactionsOfYearService();
+    Task<int> GetTransactionsQuantityService(int Id);
 
     Task<decimal> GetAtmWithdrawTotalService();
 

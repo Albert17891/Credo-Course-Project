@@ -11,28 +11,34 @@ public class UserRepository : BaseRepository<AppUser>, IUserRepository
 	{
 		_context = context;
 	}
-
-	public async Task<int> GetUsersOfOneMonth()
+	public async Task<int> GetUsersQuantity(int Id)
 	{
-		return await _context.Users.Where(x => EF.Functions.DateDiffDay(x.RegisterTime, DateTime.Now) <= 30)
-			                       .CountAsync();
-	}
+		switch (Id)
+		{
+			case 30:
+				{
+					//For Month
+					return await _context.Users.Where(x => EF.Functions.DateDiffDay(x.RegisterTime, DateTime.Now) <= 30)
+								   .CountAsync();
+					break;
+				}
+			case 180:
+				{
+					//For This Year
+					var check = DateTime.Now.Subtract(new DateTime(DateTime.Now.Year, 1, 1)).TotalDays;
 
-	public async Task<int> GetUsersOfOneYear()
-	{
-        return await _context.Users.Where(x => EF.Functions.DateDiffDay(x.RegisterTime, DateTime.Now) <= 365)
-                                   .CountAsync();
-    }
+					return await _context.Users.Where(x => EF.Functions
+											   .DateDiffDay(x.RegisterTime, DateTime.Now) <= check)
+											   .CountAsync();
 
-	public async Task<int> GetUsersOfThisYear()
-	{
-
-		var check =DateTime.Now.Subtract( new DateTime(DateTime.Now.Year, 1, 1)).TotalDays;
-
-		return await _context.Users.Where(x => EF.Functions
-								   .DateDiffDay(x.RegisterTime, DateTime.Now) <= check)
-                                   .CountAsync();
-
-        
+					break;
+				}
+			default:
+				{
+					//For One Year
+					return await _context.Users.Where(x => EF.Functions.DateDiffDay(x.RegisterTime, DateTime.Now) <= 365)
+								  .CountAsync();
+				}
+		}
 	}
 }

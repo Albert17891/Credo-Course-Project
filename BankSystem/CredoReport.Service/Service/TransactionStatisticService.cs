@@ -15,18 +15,8 @@ public class TransactionStatisticService : ITransactionStatisticService
         return await _contextWrapper.transactionRepository.GetAtmWithdrawTotal();
     }
 
-    public async Task<int> GetTransactionsOfMounthService()
+    public async Task<int> GetTransactionsQuantityService(int Id)
     {
-        return await _contextWrapper.transactionRepository.GetTransactionsOfMounth();
-    }
-
-    public async Task<int> GetTransactionsOfSixMounthService()
-    {
-        return await _contextWrapper.transactionRepository.GetTransactionsOfSixMounth();
-    }
-
-    public async Task<int> GetTransactionsOfYearService()
-    {
-        return await _contextWrapper.transactionRepository.GetTransactionsOfYear();
+        return await _contextWrapper.transactionRepository.GetTransactionsQuantity(Id);
     }
 }

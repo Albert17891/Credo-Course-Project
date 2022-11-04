@@ -19,6 +19,18 @@ public class AccountService : IAccountService
     {
         var checkCard = await _context.cardRepository.Table.Where(x => x.CardNumber == creditCardNumber && x.Pin == pin).SingleOrDefaultAsync();
 
+        if(await _context.cardRepository.CheckExpiredCards(checkCard.Id))
+        {
+            checkCard = null;
+            return checkCard.Adapt<CardAtmServiceModel>();
+        }
+        else if(await _context.cardRepository.CheckReplaceableCards(checkCard.Id))
+        {
+            var result = checkCard.Adapt<CardAtmServiceModel>();
+            result.Replaceable = true;
+            return result;
+        }
+
         return checkCard.Adapt<CardAtmServiceModel>();
     }
 }
