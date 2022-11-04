@@ -44,6 +44,7 @@ public static class UserSeed
             Email = "abo@gmail.com",
             IdNumber = "47001034566",
             BirthDate = DateTime.Parse("1994/07/01"),
+            RegisterTime=DateTime.Now,
             EmailConfirmed = true,
             PhoneNumberConfirmed = true
         };

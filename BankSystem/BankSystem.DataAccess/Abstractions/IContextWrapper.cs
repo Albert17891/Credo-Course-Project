@@ -7,5 +7,6 @@ public interface IContextWrapper:IDisposable
 
     ITransactionRepository transactionRepository { get; }
     
+    IUserRepository userRepository { get; }
     void Complete();
 }

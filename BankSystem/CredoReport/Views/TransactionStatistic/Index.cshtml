@@ -4,16 +4,16 @@
 
 <ul>
     <li class="nav-item">
-        @Html.ActionLink("ბოლო 1 თვეში განხორციელებული ტრანზაქციების რაოდენობა","QuantityTransaction",new {quantity=30})
+        @Html.ActionLink("ბოლო 1 თვეში განხორციელებული ტრანზაქციების რაოდენობა","QuantityTransaction",new {choseType=30})
     </li>
 
     <li class="nav-item">
-        @Html.ActionLink("ბოლო 6 თვეში ტრანზაქციების რაოდენობა","QuantityTransaction",new {quantity=60})
+        @Html.ActionLink("ბოლო 6 თვეში ტრანზაქციების რაოდენობა","QuantityTransaction",new {choseType=60})
 
     </li>
 
     <li class="nav-item">
-        @Html.ActionLink("ბოლო 1 წელში განხორციელებული ტრანზაქციების რაოდენობა","QuantityTransaction",new {quantity=1})
+        @Html.ActionLink("ბოლო 1 წელში განხორციელებული ტრანზაქციების რაოდენობა","QuantityTransaction",new {choseType=1})
     </li>
 
     <li class="nav-item">
@@ -32,7 +32,7 @@
          @Html.ActionLink("ბოლო ერთ თვეში ტრანზაქციების რაოდენობა დღეების მიხედვით (ჩარტი)","")
     </li>
     <li class="nav-item">
-         @Html.ActionLink("ATM-დან გამოტანილი თანხის ჯამური რაოდენობა","")
+        @Html.ActionLink("ATM-დან გამოტანილი თანხის ჯამური რაოდენობა","AtmMoneyQuantity")
     </li>
 </ul>
 

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankSystem.PersistenceDB.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20221102071437_CreateCredoDb")]
+    [Migration("20221103162541_CreateCredoDb")]
     partial class CreateCredoDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -151,15 +151,14 @@ namespace BankSystem.PersistenceDB.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int>("Currency")
+                        .HasColumnType("int");
+
                     b.Property<string>("ReceiverUserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("TransactionDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<decimal>("TransactionIncome")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("TransactionType")
                         .HasColumnType("int");
@@ -192,9 +191,8 @@ namespace BankSystem.PersistenceDB.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("Currency")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Currency")
+                        .HasColumnType("int");
 
                     b.Property<string>("Iban")
                         .IsRequired()
@@ -349,13 +347,13 @@ namespace BankSystem.PersistenceDB.Migrations
                     b.HasOne("BankSystem.Domain.Models.UserAccount", "UserAccount")
                         .WithMany("CreditCards")
                         .HasForeignKey("UserAccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("BankSystem.Domain.Models.AppUser", "User")
                         .WithMany("CreditCards")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -368,7 +366,7 @@ namespace BankSystem.PersistenceDB.Migrations
                     b.HasOne("BankSystem.Domain.Models.AppUser", "User")
                         .WithMany("Transactions")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -379,7 +377,7 @@ namespace BankSystem.PersistenceDB.Migrations
                     b.HasOne("BankSystem.Domain.Models.AppUser", "User")
                         .WithMany("UserAccounts")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");

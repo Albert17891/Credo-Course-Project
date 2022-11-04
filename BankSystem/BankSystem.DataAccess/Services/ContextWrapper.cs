@@ -11,6 +11,7 @@ public class ContextWrapper : IContextWrapper
     public IUserAccountRepository userAccountRepository { get; }
 
     public ITransactionRepository transactionRepository { get; }
+    public IUserRepository userRepository { get; }
 
     public ContextWrapper(IdentityContext context)
     {
@@ -18,6 +19,7 @@ public class ContextWrapper : IContextWrapper
         cardRepository = new CreditCardRepository(_context);
         userAccountRepository = new UserAccountRepository(_context);
         transactionRepository = new TransactionRepository(_context);
+        userRepository = new UserRepository(_context);
     }
 
     

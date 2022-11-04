@@ -165,11 +165,11 @@ namespace BankSystem.PersistenceDB.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ReceiverUserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ReceiverUserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TransferFee = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     TransferAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     TransactionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    TransactionIncome = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Currency = table.Column<int>(type: "int", nullable: false),
                     TransactionType = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -180,7 +180,7 @@ namespace BankSystem.PersistenceDB.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -192,7 +192,7 @@ namespace BankSystem.PersistenceDB.Migrations
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Iban = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Currency = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Currency = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -202,7 +202,7 @@ namespace BankSystem.PersistenceDB.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -226,13 +226,13 @@ namespace BankSystem.PersistenceDB.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_CreditCards_UsersAccounts_UserAccountId",
                         column: x => x.UserAccountId,
                         principalTable: "UsersAccounts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(

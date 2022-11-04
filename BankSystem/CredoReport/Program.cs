@@ -1,7 +1,12 @@
+using CredoReport.Infrastracture.ServiceCollectionExtensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddRepositoryServcies();
+builder.Services.AddContext(builder.Configuration);
+builder.Services.AddServicesExtension();
 
 var app = builder.Build();
 

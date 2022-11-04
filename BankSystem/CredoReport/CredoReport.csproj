@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BankSystem.Domain\BankSystem.Domain.csproj" />
+    <ProjectReference Include="..\CredoReport.Service\CredoReport.Service.csproj" />
   </ItemGroup>
 
 </Project>
