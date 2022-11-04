@@ -1,9 +1,17 @@
-﻿namespace CredoReport.Service.Abstractions;
+﻿using CredoReport.Service.Model;
+
+namespace CredoReport.Service.Abstractions;
 public interface ITransactionStatisticService
 {
     Task<int> GetTransactionsOfMounthService();
+
     Task<int> GetTransactionsOfSixMounthService();
+
     Task<int> GetTransactionsOfYearService();
 
     Task<decimal> GetAtmWithdrawTotalService();
+
+    Task<IncomeInCurrencyRatesModel> GetIncomeInValutes();
+
+    Task<IncomeInCurrencyRatesModel> GetAvarageIncomeInValutes();
 }

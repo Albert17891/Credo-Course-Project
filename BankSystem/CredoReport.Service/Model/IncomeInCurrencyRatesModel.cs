@@ -1,9 +1,8 @@
-﻿namespace CredoReport.Models.TransactionStastistic;
+﻿namespace CredoReport.Service.Model;
 
-public class TransactionFee
+public class IncomeInCurrencyRatesModel
 {
     public decimal GelTotal { get; set; }
     public decimal UsdTotal { get; set; }
     public decimal EuroTotal { get; set; }
-
 }
