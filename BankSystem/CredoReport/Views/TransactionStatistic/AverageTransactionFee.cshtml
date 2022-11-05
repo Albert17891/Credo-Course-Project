@@ -1,0 +1,36 @@
+﻿@model CredoReport.Models.TransactionStastistic.TransactionFee
+
+@{
+    ViewData["Title"] = "AverageTransactionFee";
+}
+
+<h1>საშუალო შემოსავალი</h1>
+
+<div>
+    
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            ლარში
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GelTotal)
+        </dd>
+        <dt class = "col-sm-2">
+           დოლარში
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UsdTotal)
+        </dd>
+        <dt class = "col-sm-2">
+            ევროში
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EuroTotal)
+        </dd>
+    </dl>
+</div>
+<div>
+    
+    <a asp-action="Index">უკან</a>
+</div>
