@@ -2,6 +2,7 @@
 
 using BankSystem.DataAccess.Abstractions;
 using BankSystem.Domain.Models.Extra;
+using CredoReport.Models.TransactionStastistic;
 using CredoReport.Service.Abstractions;
 using System.Collections.Generic;
 
@@ -34,8 +35,12 @@ public class TransactionStatisticService : ITransactionStatisticService
         return await _contextWrapper.transactionRepository.GetAtmWithdrawTotal();
     }
 
-    public async Task<Dictionary<string, int>> GetChartDataService()
+    public async Task<ChartJsServieModel> GetChartDataService()
     {
-        return await _contextWrapper.transactionRepository.GetChartData();
+        var data= await _contextWrapper.transactionRepository.GetChartData();
+
+        var chart = ChartService.GetChart(data);
+
+        return chart;
     }
 }

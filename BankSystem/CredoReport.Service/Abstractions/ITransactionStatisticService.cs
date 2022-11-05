@@ -2,6 +2,7 @@
 
 using BankSystem.Domain.Models.Enum;
 using BankSystem.Domain.Models.Extra;
+using CredoReport.Models.TransactionStastistic;
 
 public interface ITransactionStatisticService
 {
@@ -13,5 +14,5 @@ public interface ITransactionStatisticService
 
     Task<decimal> GetWithdrawTotalService();
 
-    Task<Dictionary<string, int>> GetChartDataService();
+    Task<ChartJsServieModel> GetChartDataService();
 }
