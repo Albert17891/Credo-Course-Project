@@ -13,8 +13,13 @@ public class UserAccountRepository : BaseRepository<UserAccount>, IUserAccountRe
         _context = context;
     }
 
-    public async Task<List<UserAccount>> GetAllUserAccount(string key)
+    public async Task<IList<UserAccount>> GetAllOtherAccount(string key, int firstAccount)
     {
-       return await Table.Where(x => x.UserId == key).ToListAsync();
+        return await Table.Where(x => x.UserId == key && x.Id != firstAccount).ToListAsync();
+    }
+
+    public async Task<IList<UserAccount>> GetAllUserAccount(string key)
+    {
+        return await Table.Where(x => x.UserId == key).ToListAsync();
     }
 }
