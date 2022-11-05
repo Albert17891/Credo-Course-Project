@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankSystem.PersistenceDB.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20221103162541_CreateCredoDb")]
+    [Migration("20221105095524_CreateCredoDb")]
     partial class CreateCredoDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,7 +52,7 @@ namespace BankSystem.PersistenceDB.Migrations
 
                     b.Property<string>("IdNumber")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -81,6 +81,9 @@ namespace BankSystem.PersistenceDB.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<DateTime>("RegisterTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -92,6 +95,9 @@ namespace BankSystem.PersistenceDB.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IdNumber")
+                        .IsUnique();
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -117,7 +123,7 @@ namespace BankSystem.PersistenceDB.Migrations
 
                     b.Property<string>("CardNumber")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Cvv")
                         .IsRequired()
@@ -135,6 +141,9 @@ namespace BankSystem.PersistenceDB.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CardNumber")
+                        .IsUnique();
 
                     b.HasIndex("UserAccountId");
 
@@ -196,13 +205,16 @@ namespace BankSystem.PersistenceDB.Migrations
 
                     b.Property<string>("Iban")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Iban")
+                        .IsUnique();
 
                     b.HasIndex("UserId");
 
