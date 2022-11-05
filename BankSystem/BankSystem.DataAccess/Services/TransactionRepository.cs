@@ -27,9 +27,12 @@ public class TransactionRepository : BaseRepository<Transactions>, ITransactionR
     {
         return new TransferIncomes()
         {
-            EuroTotal = await _context.Transactions.Where(x => x.Currency == Currency.EUR).Select(x => x.TransferFee).AverageAsync(),
-            GelTotal = await _context.Transactions.Where(x => x.Currency == Currency.GEL).Select(x => x.TransferFee).AverageAsync(),
-            UsdTotal = await _context.Transactions.Where(x => x.Currency == Currency.USD).Select(x => x.TransferFee).AverageAsync()
+            EuroTotal =await _context.Transactions.Where(x => x.Currency == Currency.EUR).Select(x => x.TransferFee)
+                                                  .DefaultIfEmpty().AverageAsync(),
+            GelTotal = await _context.Transactions.Where(x => x.Currency == Currency.GEL).Select(x => x.TransferFee)
+                                                  .DefaultIfEmpty().AverageAsync(),
+            UsdTotal = await _context.Transactions.Where(x => x.Currency == Currency.USD).Select(x => x.TransferFee)
+                                                  .DefaultIfEmpty().AverageAsync()
         };
     }
 
