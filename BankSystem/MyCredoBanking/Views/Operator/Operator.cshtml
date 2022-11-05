@@ -1,4 +1,4 @@
-﻿@model IEnumerable<UserRequest>
+﻿@model IEnumerable<UserResponse>
 
 @{
     ViewData["Title"] = "Operator Page";
@@ -49,7 +49,7 @@
                 <td>
                     @Html.ActionLink("ანგარიშები", "GetUserAccounts", new {  Id=item.Id})
                     @Html.ActionLink("ბარათები","GetUserCards", new { id=item.Id})
-                    @Html.ActionLink("ანგარიშის დამატება ", "UserAccount", new { id=item.Id})                   
+                    @Html.ActionLink("ანგარიშის დამატება ", "CreateUserAccount", new { id=item.Id})
                 </td>
             </tr>
         }

@@ -5,7 +5,7 @@
 
 <ul>
     <li class="nav-item">
-        @Html.ActionLink("მიმდინარე წელს დარეგისტრირებული მომხმარებლების რაოდენობა","GetUserQuantity",new {Id=180})
+        @Html.ActionLink("მიმდინარე წელს დარეგისტრირებული მომხმარებლების რაოდენობა","GetUserQuantity",new {Id=DateTime.Now.Subtract(new DateTime(DateTime.Now.Year, 1, 1)).TotalDays})
     </li>
 
     <li class="nav-item">

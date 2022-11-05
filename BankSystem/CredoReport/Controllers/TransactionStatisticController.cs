@@ -2,8 +2,10 @@
 
 using CredoReport.Models.TransactionStastistic;
 using CredoReport.Service.Abstractions;
+using Mapster;
 using Microsoft.AspNetCore.Mvc;
 
+[Route("TransactionStatistic")]
 public class TransactionStatisticController : Controller
 {
     private readonly ITransactionStatisticService _service;
@@ -12,6 +14,9 @@ public class TransactionStatisticController : Controller
     {
         _service = service;
     }
+
+    [Route("Index")]
+    [HttpGet]
     public IActionResult Index()
     {
         return View();
@@ -28,14 +33,20 @@ public class TransactionStatisticController : Controller
     [HttpGet("Id")]
     public async Task<IActionResult> TransactionFeeQuantity(int Id)
     {
-        return View();        
+        var fee =await _service.GetTotalIncomeService(Id);
+        return View(fee.Adapt<TransactionFee>());
     }
 
+    [Route("AverageTransactionFee")]
+    [HttpGet]
     public async Task<IActionResult> AverageTransactionFee()
     {
-        return View();
+        var averageFee = await _service.GetAvgIncomeService();
+        return View(averageFee.Adapt<TransactionFee>()) ;
     }
 
+    [Route("AtmMoneyQuantity")]
+    [HttpGet]
     public async Task<IActionResult> AtmMoneyQuantity()
     {
         var result = await _service.GetWithdrawTotalService();

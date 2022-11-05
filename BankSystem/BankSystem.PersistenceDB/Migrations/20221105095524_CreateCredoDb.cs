@@ -30,8 +30,9 @@ namespace BankSystem.PersistenceDB.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IdNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IdNumber = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    RegisterTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -190,7 +191,7 @@ namespace BankSystem.PersistenceDB.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Iban = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Iban = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Currency = table.Column<int>(type: "int", nullable: false)
                 },
@@ -213,7 +214,7 @@ namespace BankSystem.PersistenceDB.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     UserAccountId = table.Column<int>(type: "int", nullable: false),
-                    CardNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CardNumber = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CardExpireDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Cvv = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Pin = table.Column<string>(type: "nvarchar(max)", nullable: false)
@@ -268,11 +269,23 @@ namespace BankSystem.PersistenceDB.Migrations
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_IdNumber",
+                table: "AspNetUsers",
+                column: "IdNumber",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CreditCards_CardNumber",
+                table: "CreditCards",
+                column: "CardNumber",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_CreditCards_UserAccountId",
@@ -288,6 +301,12 @@ namespace BankSystem.PersistenceDB.Migrations
                 name: "IX_Transactions_UserId",
                 table: "Transactions",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UsersAccounts_Iban",
+                table: "UsersAccounts",
+                column: "Iban",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_UsersAccounts_UserId",

@@ -18,9 +18,8 @@ public class RegisterRequest
     public DateTime BirthDate { get; set; }
 
     [Required]
-    [DataType(DataType.EmailAddress)]
+    [DataType(DataType.EmailAddress, ErrorMessage = ErrorMessage.Email)]
     public string Email { get; set; }
-
 
     [Required]
     [DataType(DataType.Password)]

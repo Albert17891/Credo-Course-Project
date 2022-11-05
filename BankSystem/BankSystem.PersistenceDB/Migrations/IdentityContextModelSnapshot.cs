@@ -50,7 +50,7 @@ namespace BankSystem.PersistenceDB.Migrations
 
                     b.Property<string>("IdNumber")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -94,6 +94,9 @@ namespace BankSystem.PersistenceDB.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("IdNumber")
+                        .IsUnique();
+
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -118,7 +121,7 @@ namespace BankSystem.PersistenceDB.Migrations
 
                     b.Property<string>("CardNumber")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Cvv")
                         .IsRequired()
@@ -136,6 +139,9 @@ namespace BankSystem.PersistenceDB.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CardNumber")
+                        .IsUnique();
 
                     b.HasIndex("UserAccountId");
 
@@ -197,13 +203,16 @@ namespace BankSystem.PersistenceDB.Migrations
 
                     b.Property<string>("Iban")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Iban")
+                        .IsUnique();
 
                     b.HasIndex("UserId");
 

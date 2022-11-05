@@ -1,6 +1,6 @@
-﻿namespace MyCredoBanking.Models.Request;
+﻿namespace MyCredoBanking.Models.Response;
 
-public class UserRequest
+public class UserResponse
 {
     public string Id { get; set; }
 

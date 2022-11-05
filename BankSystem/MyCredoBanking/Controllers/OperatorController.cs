@@ -11,44 +11,44 @@ using MyCredoBanking.Models.Response;
 using MyCredoBanking.Service.Abstractions;
 using MyCredoBanking.Service.Model;
 
-[Authorize(Roles ="Operator")]
+[Authorize(Roles = "Operator")]
 public class OperatorController : Controller
 {
     private readonly UserManager<AppUser> _userManager;
     private readonly IOperatorService _operatorService;
     private readonly IUserService _userService;
 
-    public OperatorController(UserManager<AppUser> userManager,IOperatorService operatorService,IUserService userService)
+    public OperatorController(UserManager<AppUser> userManager, IOperatorService operatorService, IUserService userService)
     {
         _userManager = userManager;
         _operatorService = operatorService;
         _userService = userService;
     }
     public async Task<IActionResult> Operator()
-    {   
-        var user =await _userManager.Users.Where(x=>x.UserName!="Operator").ToListAsync() ;
-       
-        return View(user.Adapt<IList<UserRequest>>());
+    {
+        var user = await _userManager.Users.Where(x => x.UserName != "Operator").ToListAsync();
+
+        return View(user.Adapt<IList<UserResponse>>());
     }
 
     [Route("CreditCard")]
     [HttpPost]
     public IActionResult CreditCard(CreditCardRequest request)
     {
-       
+
         return View(request);
     }
 
     [HttpPost]
     public async Task<IActionResult> CreateCreditCard(CreditCardRequest cardRequest)
-    {
+    {      
         await _operatorService.AddCardForAccount(cardRequest.Adapt<CreditCardServiceModel>());
         return RedirectToAction("Operator");
     }
 
-    [Route("UserAccount")]
+    [Route("CreateUserAccount")]
     [HttpGet("{Id}")]
-    public IActionResult UserAccount(string Id)
+    public IActionResult CreateUserAccount(string Id)
     {
         return View(new UserAccountRequest() { UserId = Id });
     }
@@ -57,15 +57,15 @@ public class OperatorController : Controller
     [HttpPost]
     public async Task<IActionResult> CreateUserAccount(UserAccountRequest userAccountRequest)
     {
-        if (ModelState.IsValid)
-        {
-            await _operatorService.AddBankAccountForUser(userAccountRequest.Adapt<UserAccountServiceModel>());
-            return RedirectToAction("Operator");
-        }
+        if (!ModelState.IsValid)
+            return View(new UserAccountRequest() { UserId = userAccountRequest.UserId });
+
+        await _operatorService.AddBankAccountForUser(userAccountRequest.Adapt<UserAccountServiceModel>());
+        return RedirectToAction("Operator");
 
 
-        return RedirectToAction("Error","Home");
     }
+
 
     [Route("GetUserCards")]
     [HttpGet("{Id}")]

@@ -1,7 +1,6 @@
 ﻿namespace CredoReport.Service.Service;
 
 using BankSystem.DataAccess.Abstractions;
-using BankSystem.Domain.Models.Enum;
 using BankSystem.Domain.Models.Extra;
 using CredoReport.Service.Abstractions;
 
