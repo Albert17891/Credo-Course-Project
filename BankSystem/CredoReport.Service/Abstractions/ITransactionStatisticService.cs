@@ -12,4 +12,6 @@ public interface ITransactionStatisticService
     Task<TransferIncomes> GetAvgIncomeService();
 
     Task<decimal> GetWithdrawTotalService();
+
+    Task<Dictionary<string, int>> GetChartDataService();
 }

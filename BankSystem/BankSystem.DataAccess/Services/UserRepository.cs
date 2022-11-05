@@ -16,6 +16,5 @@ public class UserRepository : BaseRepository<AppUser>, IUserRepository
 	{
 		return await _context.Users.Where(x => EF.Functions.DateDiffDay(x.RegisterTime, DateTime.Now) <= Id)
 					   .CountAsync();
-
 	}
 }
