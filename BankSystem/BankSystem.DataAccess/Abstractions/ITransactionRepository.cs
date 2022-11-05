@@ -12,4 +12,6 @@ public interface ITransactionRepository : IBaseRepository<Transactions>
     Task<TransferIncomes> GetAvgIncome();
 
     Task<decimal> GetAtmWithdrawTotal();
+
+    Task<Dictionary<string, int>> GetChartData();
 }

@@ -6,7 +6,7 @@ using BankSystem.Domain.Models.Enum;
 using BankSystem.Domain.Models.Extra;
 using BankSystem.PersistenceDB.Context;
 using Microsoft.EntityFrameworkCore;
-
+using System.Collections.Generic;
 
 public class TransactionRepository : BaseRepository<Transactions>, ITransactionRepository
 {
@@ -31,6 +31,28 @@ public class TransactionRepository : BaseRepository<Transactions>, ITransactionR
             GelTotal = await _context.Transactions.Where(x => x.Currency == Currency.GEL).Select(x => x.TransferFee).AverageAsync(),
             UsdTotal = await _context.Transactions.Where(x => x.Currency == Currency.USD).Select(x => x.TransferFee).AverageAsync()
         };
+    }
+
+    public async Task<Dictionary<string, int>> GetChartData()
+    {
+        var chartData = new Dictionary<string, int>();
+
+        var fromDate = DateTime.Today.AddDays(-30);
+
+        var data = _context.Transactions.Where(x => x.TransactionDate >= fromDate)
+            .ForEachAsync(x =>
+            {
+                var date = x.TransactionDate.ToString("dd/MM");
+                if (chartData.ContainsKey(date))
+                {
+                    chartData[date]++;
+                }
+                else
+                {
+                    chartData.Add(x.TransactionDate.ToString("dd/MM"), 1);
+                }
+            });
+        return chartData;
     }
 
     public async Task<TransferIncomes> GetTotalIncome(int days)
