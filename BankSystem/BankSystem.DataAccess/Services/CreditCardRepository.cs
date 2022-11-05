@@ -1,9 +1,10 @@
-﻿using BankSystem.DataAccess.Abstractions;
+﻿namespace BankSystem.DataAccess.Services;
+
+using BankSystem.DataAccess.Abstractions;
 using BankSystem.Domain.Models;
 using BankSystem.PersistenceDB.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace BankSystem.DataAccess.Services;
 public class CreditCardRepository : BaseRepository<CreditCard>, ICreditCardRepository
 {
     private readonly IdentityContext _context;

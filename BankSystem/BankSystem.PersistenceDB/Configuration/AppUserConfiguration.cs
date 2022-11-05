@@ -1,8 +1,9 @@
-﻿using BankSystem.Domain.Models;
+﻿namespace BankSystem.PersistenceDB.Configuration;
+
+using BankSystem.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace BankSystem.PersistenceDB.Configuration;
 
 public class AppUserConfiguration : IEntityTypeConfiguration<AppUser>
 {

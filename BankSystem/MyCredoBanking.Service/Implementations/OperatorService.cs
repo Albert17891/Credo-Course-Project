@@ -1,10 +1,11 @@
-﻿using BankSystem.DataAccess.Abstractions;
+﻿namespace MyCredoBanking.Service.Implementations;
+
+using BankSystem.DataAccess.Abstractions;
 using BankSystem.Domain.Models;
 using Mapster;
 using MyCredoBanking.Service.Abstractions;
 using MyCredoBanking.Service.Model;
 
-namespace MyCredoBanking.Service.Implementations;
 
 public class OperatorService : IOperatorService
 {

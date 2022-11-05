@@ -1,7 +1,7 @@
-﻿using MyCredoBanking.Infrastracture.Attributes;
-using System.ComponentModel.DataAnnotations;
+﻿namespace MyCredoBanking.Models.Request;
 
-namespace MyCredoBanking.Models.Request;
+using BankSystem.Domain.Models.Enum;
+using System.ComponentModel.DataAnnotations;
 
 public class UserAccountRequest
 {

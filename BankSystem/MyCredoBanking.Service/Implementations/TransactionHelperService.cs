@@ -1,10 +1,11 @@
-﻿using BankSystem.Domain.Models;
+﻿namespace MyCredoBanking.Service.Implementations;
+
+using BankSystem.Domain.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MyCredoBanking.Service.Abstractions;
 using MyCredoBanking.Service.Model;
 
-namespace MyCredoBanking.Service.Implementations;
 public class TransactionHelperService : ITransactionHelperService
 {
     private readonly IUserService _userService;

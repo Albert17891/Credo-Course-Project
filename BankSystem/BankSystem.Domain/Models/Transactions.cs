@@ -1,6 +1,6 @@
-﻿using BankSystem.Domain.Models.Enum;
+﻿namespace BankSystem.Domain.Models;
 
-namespace BankSystem.Domain.Models;
+using BankSystem.Domain.Models.Enum;
 
 public class Transactions
 {

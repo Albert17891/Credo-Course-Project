@@ -1,10 +1,11 @@
-﻿using AtmCredoBanking.Service.Abstractions;
+﻿namespace CredoATM.Controllers;
+
+using AtmCredoBanking.Service.Abstractions;
 using CredoATM.Infastructure.ServiceCollectionExtensions;
 using CredoATM.Models;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CredoATM.Controllers;
 public class AccountController : Controller
 {
     private readonly IAccountService _accountService;

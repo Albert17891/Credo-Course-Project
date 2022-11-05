@@ -1,4 +1,6 @@
-﻿using BankSystem.Domain.Models;
+﻿namespace BankSystem.PersistenceDB.Seed;
+
+using BankSystem.Domain.Models;
 using BankSystem.Domain.Models.Enum;
 using BankSystem.PersistenceDB.Context;
 using Microsoft.AspNetCore.Builder;
@@ -6,7 +8,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BankSystem.PersistenceDB.Seed;
 public static class UserSeed
 {
     public static async Task AddUserAndRoles(IApplicationBuilder builder)

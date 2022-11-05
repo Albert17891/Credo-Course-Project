@@ -5,6 +5,4 @@ public class CardAtmServiceModel
     public int UserAccountId { get; set; }
 
     public bool Replaceable { get; set; } = false;
-
-
 }

@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿namespace BankSystem.Domain.Models;
 
-namespace BankSystem.Domain.Models;
+using Microsoft.AspNetCore.Identity;
 
 public class AppUser : IdentityUser
 {

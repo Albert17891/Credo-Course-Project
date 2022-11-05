@@ -1,9 +1,8 @@
-﻿using BankSystem.Domain.Models;
+﻿namespace BankSystem.PersistenceDB.Context;
+
+using BankSystem.Domain.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-
-
-namespace BankSystem.PersistenceDB.Context;
 
 public class IdentityContext : IdentityDbContext<AppUser>
 {

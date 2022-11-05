@@ -1,4 +1,6 @@
-﻿using BankSystem.Domain.Models;
+﻿namespace MyCredoBanking.Controllers;
+
+using BankSystem.Domain.Models;
 using Mapster;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -9,7 +11,6 @@ using MyCredoBanking.Models.Transaction;
 using MyCredoBanking.Service.Abstractions;
 using MyCredoBanking.Service.Model;
 
-namespace MyCredoBanking.Controllers;
 
 [Authorize(Roles = "User")]
 public class OutherTransactionController : Controller

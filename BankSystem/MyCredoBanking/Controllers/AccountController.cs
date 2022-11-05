@@ -1,11 +1,12 @@
-﻿using BankSystem.Domain.Models;
+﻿namespace MyCredoBanking.Controllers;
+
+using BankSystem.Domain.Models;
 using BankSystem.Domain.Models.Enum;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MyCredoBanking.Models.Request;
 
-namespace MyCredoBanking.Controllers;
 public class AccountController : Controller
 {
     private readonly UserManager<AppUser> _userManager;

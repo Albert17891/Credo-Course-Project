@@ -1,6 +1,6 @@
-﻿namespace CredoReport.Service.Model;
+﻿namespace BankSystem.Domain.Models.Extra;
 
-public class IncomeInCurrencyRatesModel
+public class TransferIncomes
 {
     public decimal GelTotal { get; set; }
     public decimal UsdTotal { get; set; }

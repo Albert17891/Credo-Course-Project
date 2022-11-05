@@ -1,7 +1,8 @@
-﻿using BankSystem.DataAccess.Abstractions;
+﻿namespace BankSystem.DataAccess.Services;
+
+using BankSystem.DataAccess.Abstractions;
 using BankSystem.PersistenceDB.Context;
 
-namespace BankSystem.DataAccess.Services;
 public class ContextWrapper : IContextWrapper
 {
     private readonly IdentityContext _context;

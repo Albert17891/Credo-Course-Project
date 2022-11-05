@@ -1,9 +1,10 @@
-﻿using AtmCredoBanking.Service.Abstractions;
+﻿namespace CredoATM.Controllers;
+
+using AtmCredoBanking.Service.Abstractions;
 using CredoATM.Infastructure.ServiceCollectionExtensions;
 using CredoATM.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CredoATM.Controllers;
 public class CardController : Controller
 {
     private readonly ICardService _cardService;

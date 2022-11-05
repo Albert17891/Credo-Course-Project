@@ -1,7 +1,7 @@
-﻿using AtmCredoBanking.Service.Abstractions;
-using AtmCredoBanking.Service.Implementations;
+﻿namespace CredoATM.Infrastracture.ServiceCollectionExtensions;
 
-namespace CredoATM.Infrastracture.ServiceCollectionExtensions;
+using AtmCredoBanking.Service.Abstractions;
+using AtmCredoBanking.Service.Implementations;
 
 public static class ServicesExtensions
 
@@ -14,4 +14,3 @@ public static class ServicesExtensions
         return services;
     }
 }
-

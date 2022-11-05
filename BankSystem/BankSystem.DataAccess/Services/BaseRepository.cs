@@ -1,8 +1,9 @@
-﻿using BankSystem.DataAccess.Abstractions;
+﻿namespace BankSystem.DataAccess.Services;
+
+using BankSystem.DataAccess.Abstractions;
 using BankSystem.PersistenceDB.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace BankSystem.DataAccess.Services;
 public class BaseRepository<T>:IBaseRepository<T> where T :class
 {
 	private readonly IdentityContext _context;

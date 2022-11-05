@@ -1,13 +1,9 @@
-﻿using MyCredoBanking.Service.nbgApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿namespace MyCredoBanking.Service.nbgApi;
 
-namespace MyCredoBanking.Service.nbgApi;
+using MyCredoBanking.Service.nbgApi.Models;
+using System.Net;
+using System.Text.Json;
+
 
 public static class Client
 {

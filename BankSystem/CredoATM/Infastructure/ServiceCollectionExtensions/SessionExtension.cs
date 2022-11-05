@@ -1,6 +1,6 @@
-﻿using System.Text.Json;
+﻿namespace CredoATM.Infastructure.ServiceCollectionExtensions;
 
-namespace CredoATM.Infastructure.ServiceCollectionExtensions;
+using System.Text.Json;
 
 public static class SessionExtension
 {
