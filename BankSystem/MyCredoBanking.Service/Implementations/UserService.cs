@@ -63,7 +63,7 @@ public class UserService : IUserService
         {
             var senderCurrencyRate = senderAccount.Currency == Currency.GEL ? 1m : Client.GetRate(senderAccount.Currency.ToString());
 
-            var recieverCurrencyRate = recieverAccount.Currency == Currency.GEL ? 1m : Client.GetRate(senderAccount.Currency.ToString());
+            var recieverCurrencyRate = recieverAccount.Currency == Currency.GEL ? 1m : Client.GetRate(recieverAccount.Currency.ToString());
             
             var neededRate = senderCurrencyRate / recieverCurrencyRate;
 
