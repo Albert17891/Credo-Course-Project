@@ -12,13 +12,16 @@ public class UserStatisticController : Controller
     {
         this.userStatistic = userStatistic;
     }
+
+    [Route("Index")]
+    [HttpGet]
     public IActionResult Index()
     {
         return View();
     }
 
     [HttpGet("{Id}")]
-    public async Task<IActionResult> GetUserQuantity(int Id)
+    public async Task<IActionResult> GetUserQuantity(double Id)
     {
         var result = await userStatistic.GetUsersQuantityService(Id);
         return View(new UserQuantity { Quantity = result });
