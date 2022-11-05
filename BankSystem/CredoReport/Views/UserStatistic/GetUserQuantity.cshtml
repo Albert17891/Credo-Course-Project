@@ -4,15 +4,15 @@
     ViewData["Title"] = "GetUserQuantity";
 }
 
-<h1>GetUserQuantity</h1>
+<h1>მომხმარებლების რაოდენობა</h1>
 
-<
+
 <div>
-    <h4>UserQuantity</h4>
+    
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Quantity)
+            რაოდენობა
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Quantity)
@@ -20,7 +20,7 @@
     </dl>
     
     <form asp-action="GetUserQuantity">
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        
+        <a asp-action="Index">უკან</a>
     </form>
 </div>
