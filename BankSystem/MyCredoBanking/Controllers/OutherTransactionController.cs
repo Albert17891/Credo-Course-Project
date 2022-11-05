@@ -38,14 +38,14 @@ public class OutherTransactionController : Controller
     [HttpPost]
     public async Task<IActionResult> GetReciverAccounts(IdNumberCheck idNumberCheck)
     {
-        var accounts = _transactionHelper.GetAccoutsWithIdNumber(_userManger, idNumberCheck.IdNumber);
+        var accounts = await _transactionHelper.GetAccoutsWithIdNumber(_userManger, User.Identity.Name, idNumberCheck.IdNumber);
 
         if (accounts is not null)
         {
             return View(accounts.Adapt<List<UserAccountRequest>>());
         }
 
-        return View("Accounts is Empty");
+        return RedirectToAction("EmptyAccount", "InnerTransaction");
     }
 
     [HttpGet]
@@ -68,7 +68,8 @@ public class OutherTransactionController : Controller
         {
             return View(accounts.Adapt<List<UserAccountRequest>>());
         }
-        return Ok();//change it
+
+        return RedirectToAction("EmptyAccount", "InnerTransaction");
     }
 
     [Route("SendToOther")]
@@ -82,11 +83,11 @@ public class OutherTransactionController : Controller
             SenderAccountId = Id,
             Amount = TempData.Get<decimal>("Amount")
         };
-        if(await _userService.Transaction(transaction.Adapt<TransactionServiceModel>()))
+        if (await _userService.Transaction(transaction.Adapt<TransactionServiceModel>()))
         {
-            return RedirectToAction("Index","User");
+            return RedirectToAction("Index", "User");
         }
 
-        return RedirectToAction("NotEnoughMoney","InnerTransaction");
+        return RedirectToAction("NotEnoughMoney", "InnerTransaction");
     }
 }
