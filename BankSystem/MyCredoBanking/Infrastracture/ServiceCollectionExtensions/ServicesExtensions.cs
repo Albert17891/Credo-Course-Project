@@ -1,7 +1,7 @@
-﻿using MyCredoBanking.Service.Abstractions;
-using MyCredoBanking.Service.Implementations;
+﻿namespace MyCredoBanking.Infrastracture.ServiceCollectionExtensions;
 
-namespace MyCredoBanking.Infrastracture.ServiceCollectionExtensions;
+using MyCredoBanking.Service.Abstractions;
+using MyCredoBanking.Service.Implementations;
 
 public static class ServicesExtensions
 
@@ -15,4 +15,3 @@ public static class ServicesExtensions
         return services;
     }
 }
-

@@ -1,6 +1,6 @@
-﻿using MyCredoBanking.Service.Model;
+﻿namespace MyCredoBanking.Service.Abstractions;
 
-namespace MyCredoBanking.Service.Abstractions;
+using MyCredoBanking.Service.Model;
 
 public interface IOperatorService
 {

@@ -1,7 +1,7 @@
-﻿using BankSystem.DataAccess.Abstractions;
-using BankSystem.DataAccess.Services;
+﻿namespace CredoReport.Infrastracture.ServiceCollectionExtensions;
 
-namespace CredoReport.Infrastracture.ServiceCollectionExtensions;
+using BankSystem.DataAccess.Abstractions;
+using BankSystem.DataAccess.Services;
 
 public static class RepositoryExtensions
 {

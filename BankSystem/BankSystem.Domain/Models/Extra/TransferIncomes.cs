@@ -1,6 +1,6 @@
-﻿namespace CredoReport.Models.TransactionStastistic;
+﻿namespace BankSystem.Domain.Models.Extra;
 
-public class TransactionFee
+public class TransferIncomes
 {
     public decimal GelTotal { get; set; }
     public decimal UsdTotal { get; set; }

@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿namespace MyCredoBanking.Controllers;
+
+using Microsoft.AspNetCore.Mvc;
 using MyCredoBanking.Models;
 using System.Diagnostics;
 
-namespace MyCredoBanking.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;

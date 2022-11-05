@@ -1,9 +1,9 @@
-﻿using BankSystem.Domain.Models;
+﻿namespace CredoATM.Infrastracture.ServiceCollectionExtensions;
+
+using BankSystem.Domain.Models;
 using BankSystem.PersistenceDB.Context;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-
-namespace CredoATM.Infrastracture.ServiceCollectionExtensions;
 
 public static class DbExtension
 {

@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿namespace CredoATM.Models;
 
-namespace CredoATM.Models;
+using System.ComponentModel.DataAnnotations;
 
 public class CreditCardLogin
 {
@@ -11,4 +11,3 @@ public class CreditCardLogin
     [RegularExpression("^[0-9]{4}$")]
     public string Pin { get; set; }
 }
-

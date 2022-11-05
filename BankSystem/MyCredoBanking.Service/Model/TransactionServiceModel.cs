@@ -1,6 +1,4 @@
-﻿using BankSystem.Domain.Models.Enum;
-
-namespace MyCredoBanking.Service.Model;
+﻿namespace MyCredoBanking.Service.Model;
 
 public class TransactionServiceModel
 {

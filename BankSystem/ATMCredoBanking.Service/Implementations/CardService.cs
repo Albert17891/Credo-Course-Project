@@ -1,9 +1,10 @@
-﻿using AtmCredoBanking.Service.Abstractions;
+﻿namespace AtmCredoBanking.Service.Implementations;
+
+using AtmCredoBanking.Service.Abstractions;
 using BankSystem.DataAccess.Abstractions;
 using BankSystem.Domain.Models;
 using BankSystem.Domain.Models.Enum;
 
-namespace AtmCredoBanking.Service.Implementations;
 
 public class CardService : ICardService
 {

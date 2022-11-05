@@ -1,12 +1,12 @@
-﻿using BankSystem.DataAccess.Abstractions;
+﻿namespace MyCredoBanking.Service.Implementations;
+
+using BankSystem.DataAccess.Abstractions;
 using BankSystem.Domain.Models;
 using BankSystem.Domain.Models.Enum;
 using Mapster;
 using MyCredoBanking.Service.Abstractions;
 using MyCredoBanking.Service.Model;
 using MyCredoBanking.Service.nbgApi;
-
-namespace MyCredoBanking.Service.Implementations;
 
 public class UserService : IUserService
 {
@@ -35,13 +35,15 @@ public class UserService : IUserService
     {
         var senderAccount = await _context.userAccountRepository.GetByKeyAsync(transaction.SenderAccountId);
         var recieverAccount = await _context.userAccountRepository.GetByKeyAsync(transaction.RecieverAccountId);
-
         // to do
-        var result = transaction.Adapt<Transactions>();
+        var config = new TypeAdapterConfig();
+        config.NewConfig<TransactionServiceModel, Transactions>()
+            .Map(dest => dest.TransferAmount, src => src.Amount)
+            .Map(dest => dest.ReceiverUserId, src => recieverAccount.UserId)
+            .Map(dest => dest.UserId, src => senderAccount.UserId)
+            .Map(dest => dest.Currency, src => senderAccount.Currency);
 
-        result.ReceiverUserId = recieverAccount.UserId;
-        result.UserId = senderAccount.UserId;
-        result.TransferAmount = transaction.Amount;//????
+        var result = transaction.Adapt<Transactions>(config);
 
         // ტრანზაქციის ტიპის დადგენა Inner or Outer.
         ConfigureTrans(ref result);
@@ -69,8 +71,6 @@ public class UserService : IUserService
         }
 
         recieverAccount.Amount += recieverGet;
-
-        result.Currency = senderAccount.Currency;
 
         await _context.transactionRepository.AddEntityAsync(result);
 

@@ -1,9 +1,10 @@
-﻿using BankSystem.Domain.Models;
+﻿namespace CredoReport.Infrastracture.ServiceCollectionExtensions;
+
+using BankSystem.Domain.Models;
 using BankSystem.PersistenceDB.Context;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace CredoReport.Infrastracture.ServiceCollectionExtensions;
 
 public static class DbExtension
 {

@@ -1,8 +1,9 @@
-﻿using CredoReport.Models.UserStatistic;
+﻿namespace CredoReport.Controllers;
+
+using CredoReport.Models.UserStatistic;
 using CredoReport.Service.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CredoReport.Controllers;
 public class UserStatisticController : Controller
 {
     private readonly IUserStatisticService userStatistic;
@@ -19,8 +20,7 @@ public class UserStatisticController : Controller
     [HttpGet("{Id}")]
     public async Task<IActionResult> GetUserQuantity(int Id)
     {
-        var result = await userStatistic.GetUsersOneMonthService();
+        var result = await userStatistic.GetUsersQuantityService(Id);
         return View(new UserQuantity { Quantity = result });
     }
-    
 }

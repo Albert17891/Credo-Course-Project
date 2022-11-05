@@ -1,4 +1,5 @@
 ﻿namespace BankSystem.Domain.Models;
+
 public class CreditCard
 {
     public int Id { get; set; }

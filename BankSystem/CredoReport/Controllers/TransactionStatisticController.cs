@@ -1,8 +1,9 @@
-﻿using CredoReport.Models.TransactionStastistic;
+﻿namespace CredoReport.Controllers;
+
+using CredoReport.Models.TransactionStastistic;
 using CredoReport.Service.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CredoReport.Controllers;
 public class TransactionStatisticController : Controller
 {
     private readonly ITransactionStatisticService _service;
@@ -27,23 +28,17 @@ public class TransactionStatisticController : Controller
     [HttpGet("Id")]
     public async Task<IActionResult> TransactionFeeQuantity(int Id)
     {
-
         return View();        
     }
 
     public async Task<IActionResult> AverageTransactionFee()
     {
-
-
-
         return View();
-
     }
 
     public async Task<IActionResult> AtmMoneyQuantity()
     {
-        var result = await _service.GetAtmWithdrawTotalService();
+        var result = await _service.GetWithdrawTotalService();
         return View(new MoneyQuantity { Quantity = result });
     }
-
 }

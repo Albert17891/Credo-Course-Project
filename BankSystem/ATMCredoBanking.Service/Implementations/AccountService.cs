@@ -1,10 +1,10 @@
-﻿using AtmCredoBanking.Service.Abstractions;
+﻿namespace AtmCredoBanking.Service.Implementations;
+
+using AtmCredoBanking.Service.Abstractions;
 using AtmCredoBanking.Service.Models;
 using BankSystem.DataAccess.Abstractions;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
-
-namespace AtmCredoBanking.Service.Implementations;
 
 public class AccountService : IAccountService
 {

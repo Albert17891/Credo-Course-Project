@@ -1,17 +1,16 @@
-﻿using BankSystem.Domain.Models;
+﻿namespace MyCredoBanking.Controllers;
+
+using BankSystem.Domain.Models;
 using Mapster;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MyCredoBanking.Models.Request;
 using MyCredoBanking.Models.Response;
 using MyCredoBanking.Service.Abstractions;
-using MyCredoBanking.Service.Implementations;
 using MyCredoBanking.Service.Model;
 
-namespace MyCredoBanking.Controllers;
 [Authorize(Roles ="Operator")]
 public class OperatorController : Controller
 {

@@ -1,7 +1,8 @@
-﻿using CredoReport.Service.Abstractions;
+﻿namespace CredoReport.Infrastracture.ServiceCollectionExtensions;
+
+using CredoReport.Service.Abstractions;
 using CredoReport.Service.Service;
 
-namespace CredoReport.Infrastracture.ServiceCollectionExtensions;
 
 public static class ServicesExtensions
 
@@ -14,4 +15,3 @@ public static class ServicesExtensions
         return services;
     }
 }
-

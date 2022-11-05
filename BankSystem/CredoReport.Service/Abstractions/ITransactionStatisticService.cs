@@ -1,7 +1,15 @@
 ﻿namespace CredoReport.Service.Abstractions;
+
+using BankSystem.Domain.Models.Enum;
+using BankSystem.Domain.Models.Extra;
+
 public interface ITransactionStatisticService
 {
-    Task<int> GetTransactionsQuantityService(int Id);
+    Task<int> GetTransactionsQuantityService(int days);
 
-    Task<decimal> GetAtmWithdrawTotalService();
+    Task<TransferIncomes> GetTotalIncomeService(int days);
+
+    Task<TransferIncomes> GetAvgIncomeService();
+
+    Task<decimal> GetWithdrawTotalService();
 }

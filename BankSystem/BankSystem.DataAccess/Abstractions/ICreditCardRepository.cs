@@ -1,6 +1,7 @@
-﻿using BankSystem.Domain.Models;
+﻿namespace BankSystem.DataAccess.Abstractions;
 
-namespace BankSystem.DataAccess.Abstractions;
+using BankSystem.Domain.Models;
+
 public interface ICreditCardRepository :IBaseRepository<CreditCard>
 {
     Task<List<CreditCard>> GetAllCreditCard(string key);

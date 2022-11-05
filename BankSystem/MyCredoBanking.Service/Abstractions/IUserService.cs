@@ -1,6 +1,6 @@
-﻿using MyCredoBanking.Service.Model;
+﻿namespace MyCredoBanking.Service.Abstractions;
 
-namespace MyCredoBanking.Service.Abstractions;
+using MyCredoBanking.Service.Model;
 
 public interface IUserService
 {
@@ -9,5 +9,4 @@ public interface IUserService
     Task<IList<CreditCardServiceModel>> GetAllCard(string userId);
 
     Task<IList<UserAccountServiceModel>> GetAllAccount(string userId);
-
 }

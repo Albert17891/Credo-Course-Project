@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Newtonsoft.Json;
+﻿namespace MyCredoBanking.Infrastracture.ServiceCollectionExtensions;
 
-namespace MyCredoBanking.Infrastracture.ServiceCollectionExtensions;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using Newtonsoft.Json;
 
 public static class TempDataExtension
 {

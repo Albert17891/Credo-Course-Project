@@ -1,9 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿namespace MyCredoBanking.Infrastracture.Attributes;
+
+using System.ComponentModel.DataAnnotations;
 using System.Text;
-
-namespace MyCredoBanking.Infrastracture.Attributes;
-
-
 
 public sealed class IbanValidationAttribute : ValidationAttribute
 {
@@ -37,12 +35,9 @@ public sealed class IbanValidationAttribute : ValidationAttribute
                 checksum += v;
                 checksum %= 97;
             }
-
-
             return checksum == 1;
         }
         else
             return false;
     }
-
 }

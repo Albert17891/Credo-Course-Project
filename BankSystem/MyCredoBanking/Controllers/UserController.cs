@@ -1,4 +1,6 @@
-﻿using BankSystem.Domain.Models;
+﻿namespace MyCredoBanking.Controllers;
+
+using BankSystem.Domain.Models;
 using Mapster;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -8,7 +10,6 @@ using MyCredoBanking.Models.Response;
 using MyCredoBanking.Service.Abstractions;
 
 
-namespace MyCredoBanking.Controllers;
 [Authorize(Roles ="User")]
 public class UserController : Controller
 {
@@ -45,5 +46,4 @@ public class UserController : Controller
         var accounds = await _userService.GetAllAccount(user.Id);
         return View(accounds.Adapt<List<UserAccountRequest>>());
     }
-
 }

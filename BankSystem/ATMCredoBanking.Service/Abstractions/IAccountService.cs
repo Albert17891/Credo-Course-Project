@@ -1,6 +1,6 @@
-﻿using AtmCredoBanking.Service.Models;
+﻿namespace AtmCredoBanking.Service.Abstractions;
 
-namespace AtmCredoBanking.Service.Abstractions;
+using AtmCredoBanking.Service.Models;
 
 public interface IAccountService
 {

@@ -1,8 +1,9 @@
-﻿using BankSystem.Domain.Models;
+﻿namespace BankSystem.DataAccess.Abstractions;
 
-namespace BankSystem.DataAccess.Abstractions;
+
+using BankSystem.Domain.Models;
+
 public interface IUserAccountRepository:IBaseRepository<UserAccount>
 {
     Task<List<UserAccount>> GetAllUserAccount(string key);
-   // Task<UserAccount> GetAccountWithCardId(int Id);
 }

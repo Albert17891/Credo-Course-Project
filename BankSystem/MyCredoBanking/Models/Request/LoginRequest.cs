@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿namespace MyCredoBanking.Models.Request;
 
-namespace MyCredoBanking.Models.Request;
+using System.ComponentModel.DataAnnotations;
 
 public class LoginRequest
 {
