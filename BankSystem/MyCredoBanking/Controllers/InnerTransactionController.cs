@@ -38,7 +38,7 @@ public class InnerTransactionController : Controller
         {
             return View(accounts.Adapt<List<UserAccountResponse>>());
         }
-        return View();
+        return RedirectToAction("EmptyAccount");
     }
 
     [HttpGet]
@@ -57,7 +57,7 @@ public class InnerTransactionController : Controller
 
         var firstAccountId = (int)TempData["FirstAccountId"];
 
-        var allAccounts = await _transactionHelper.GetAccounts(_userManger, User.Identity.Name, firstAccountId);
+        var allAccounts = await _transactionHelper.GetOtherAccounts(_userManger, User.Identity.Name, firstAccountId);
 
         TempData["FirstAccountId"] = firstAccountId;
 
@@ -65,7 +65,8 @@ public class InnerTransactionController : Controller
         {
             return View(allAccounts.Adapt<List<UserAccountResponse>>());
         }
-        return View();
+
+        return RedirectToAction("EmptyAccount");
     }
 
     public async Task<IActionResult> SendToMe(int Id)
@@ -84,6 +85,11 @@ public class InnerTransactionController : Controller
         }
 
         return RedirectToAction("NotEnoughMoney");
+    }
+
+    public IActionResult EmptyAccount()
+    {
+        return View();
     }
 
     public IActionResult NotEnoughMoney()

@@ -5,5 +5,7 @@ using BankSystem.Domain.Models;
 
 public interface IUserAccountRepository:IBaseRepository<UserAccount>
 {
-    Task<List<UserAccount>> GetAllUserAccount(string key);
+    Task<IList<UserAccount>> GetAllUserAccount(string key);
+
+    Task<IList<UserAccount>> GetAllOtherAccount(string key, int firstAccount);
 }
