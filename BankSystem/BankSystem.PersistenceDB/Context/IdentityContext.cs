@@ -18,6 +18,13 @@ public class IdentityContext : IdentityDbContext<AppUser>
 
     protected override void OnModelCreating(ModelBuilder modelbuilder)
     {
+        modelbuilder.Entity<CreditCard>()
+            .HasIndex(x => x.CardNumber).IsUnique();
+        modelbuilder.Entity<UserAccount>()
+            .HasIndex(x => x.Iban).IsUnique();
+        modelbuilder.Entity<AppUser>()
+            .HasIndex(x => x.IdNumber).IsUnique();
+
         foreach (var relationship in modelbuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
         {
             relationship.DeleteBehavior = DeleteBehavior.Restrict;
