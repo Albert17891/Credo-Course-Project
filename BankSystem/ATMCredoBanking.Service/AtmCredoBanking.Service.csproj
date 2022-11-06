@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BankSystem.DataAccess\BankSystem.DataAccess.csproj" />
+    <ProjectReference Include="..\MyCredoBanking.Service\MyCredoBanking.Service.csproj" />
   </ItemGroup>
 
 </Project>
