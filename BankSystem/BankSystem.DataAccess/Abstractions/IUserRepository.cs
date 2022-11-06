@@ -4,5 +4,5 @@ using BankSystem.Domain.Models;
 
 public interface IUserRepository : IBaseRepository<AppUser>
 {
-    Task<int> GetUsersQuantity(double Id);   
+    Task<int> GetUsersQuantity(double Id);
 }

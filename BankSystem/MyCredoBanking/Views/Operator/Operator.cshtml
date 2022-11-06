@@ -34,15 +34,15 @@
 
                 <td>
                     @Html.DisplayFor(modelItem => item.FirstName)
-                </td>
+                </td> 
                 <td>
                     @Html.DisplayFor(modelItem => item.LastName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.IdNumber)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BirthDate)
+                <td>                   
+                    @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.BirthDate))
                 </td>              
                
 

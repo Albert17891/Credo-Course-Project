@@ -16,7 +16,7 @@ public static class DbExtension
 
         services.AddIdentity<AppUser, IdentityRole>(opt =>
         {
-            opt.User.RequireUniqueEmail = true;             
+            opt.User.RequireUniqueEmail = true;
 
         }).AddEntityFrameworkStores<IdentityContext>();
 

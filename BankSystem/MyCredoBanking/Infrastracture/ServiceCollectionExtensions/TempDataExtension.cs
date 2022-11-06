@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 public static class TempDataExtension
 {
-    public static void Put<T>( this ITempDataDictionary tempData,string key,T value) where T : struct
+    public static void Put<T>(this ITempDataDictionary tempData, string key, T value) where T : struct
     {
         tempData[key] = JsonConvert.SerializeObject(value);
     }
@@ -14,7 +14,7 @@ public static class TempDataExtension
     {
         object o;
         tempData.TryGetValue(key, out o);
-        var result= JsonConvert.DeserializeObject<T>((string)o);
+        var result = JsonConvert.DeserializeObject<T>((string)o);
         return result;
     }
 

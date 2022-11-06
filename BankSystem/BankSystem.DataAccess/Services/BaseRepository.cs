@@ -4,7 +4,7 @@ using BankSystem.DataAccess.Abstractions;
 using BankSystem.PersistenceDB.Context;
 using Microsoft.EntityFrameworkCore;
 
-public class BaseRepository<T>:IBaseRepository<T> where T :class
+public class BaseRepository<T> : IBaseRepository<T> where T : class
 {
 	private readonly IdentityContext _context;
 	private readonly DbSet<T> _dbSet;

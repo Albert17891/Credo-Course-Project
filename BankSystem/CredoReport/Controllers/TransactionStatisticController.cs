@@ -52,7 +52,7 @@ public class TransactionStatisticController : Controller
         var result = await _service.GetWithdrawTotalService();
         return View(new MoneyQuantity { Quantity = result });
     }
-  
+
     [Route("ChartIndex")]
     [HttpGet]
     public async Task<IActionResult> ChartIndex()

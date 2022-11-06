@@ -2,7 +2,7 @@
 
 using BankSystem.Domain.Models.Enum;
 
-public class UserAccount 
+public class UserAccount
 {
     public int Id { get; set; }
 

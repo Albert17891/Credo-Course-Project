@@ -27,7 +27,7 @@ public class TransactionRepository : BaseRepository<Transactions>, ITransactionR
     {
         return new TransferIncomes()
         {
-            EuroTotal =await _context.Transactions.Where(x => x.Currency == Currency.EUR).Select(x => x.TransferFee)
+            EuroTotal = await _context.Transactions.Where(x => x.Currency == Currency.EUR).Select(x => x.TransferFee)
                                                   .DefaultIfEmpty().AverageAsync(),
             GelTotal = await _context.Transactions.Where(x => x.Currency == Currency.GEL).Select(x => x.TransferFee)
                                                   .DefaultIfEmpty().AverageAsync(),
@@ -42,7 +42,7 @@ public class TransactionRepository : BaseRepository<Transactions>, ITransactionR
 
         var fromDate = DateTime.Today.AddDays(-30);
 
-        var data = _context.Transactions.Where(x => x.TransactionDate >= fromDate)
+        await _context.Transactions.Where(x => x.TransactionDate >= fromDate)
             .ForEachAsync(x =>
             {
                 var date = x.TransactionDate.ToString("dd/MM");

@@ -1,6 +1,5 @@
 ﻿namespace CredoReport.Service.Abstractions;
 
-using BankSystem.Domain.Models.Enum;
 using BankSystem.Domain.Models.Extra;
 using CredoReport.Models.TransactionStastistic;
 

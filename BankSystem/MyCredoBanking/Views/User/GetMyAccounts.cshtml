@@ -4,10 +4,6 @@
     ViewData["Title"] = "UserAccount Page";
 }
 
-<div class="text-left">
-    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">მომხმარებლის დამატება</a>
-</div>
-
 <table class="table">
     <thead>
         <tr>
@@ -39,14 +35,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Currency)
                 </td>
-
-
-                <td>
-                    @using (Html.BeginForm("CreditCard", "Operator",new CreditCardRequest { UserAccountId = item.Id, UserId = item.UserId }, FormMethod.Post))
-                    {                       
-                       
-                        <input type="submit" value="ბარათის დამატება" class="btn btn-default" id="create" />
-                    }
+                              
                     
             </tr>
         }

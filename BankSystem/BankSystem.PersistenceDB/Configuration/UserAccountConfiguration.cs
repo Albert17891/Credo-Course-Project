@@ -8,7 +8,7 @@ public class UserAccountConfiguration : IEntityTypeConfiguration<UserAccount>
 {
     public void Configure(EntityTypeBuilder<UserAccount> builder)
     {
-        builder.Property(x => x.Currency).IsRequired();      
+        builder.Property(x => x.Currency).IsRequired();
 
         builder.Property(x => x.Iban).IsRequired();
 

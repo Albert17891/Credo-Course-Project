@@ -23,11 +23,9 @@ public class ContextWrapper : IContextWrapper
         userRepository = new UserRepository(_context);
     }
 
-    
-
     public void Complete()
     {
-         _context.SaveChanges();
+        _context.SaveChanges();
     }
 
     public void Dispose()
