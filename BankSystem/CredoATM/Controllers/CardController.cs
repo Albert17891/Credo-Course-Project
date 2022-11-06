@@ -60,10 +60,10 @@ public class CardController : Controller
             return RedirectToAction("Index");
         }
 
-        return RedirectToAction("NoEnoughMoney");
+        return RedirectToAction("NotEnoughMoney");
     }
 
-    public IActionResult NoEnoughMoney()
+    public IActionResult NotEnoughMoney()
     {
         return View();
     }

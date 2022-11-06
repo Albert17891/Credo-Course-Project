@@ -17,12 +17,16 @@ public class OperatorController : Controller
     private readonly UserManager<AppUser> _userManager;
     private readonly IOperatorService _operatorService;
     private readonly IUserService _userService;
+    private readonly ILogger<OperatorController> _logger;
 
-    public OperatorController(UserManager<AppUser> userManager, IOperatorService operatorService, IUserService userService)
+    public OperatorController(UserManager<AppUser> userManager, IOperatorService operatorService
+        , IUserService userService
+        ,ILogger<OperatorController> logger)
     {
         _userManager = userManager;
         _operatorService = operatorService;
         _userService = userService;
+        _logger = logger;
     }
     public async Task<IActionResult> Operator()
     {
@@ -61,6 +65,9 @@ public class OperatorController : Controller
             return View(new UserAccountRequest() { UserId = userAccountRequest.UserId });
 
         await _operatorService.AddBankAccountForUser(userAccountRequest.Adapt<UserAccountServiceModel>());
+
+        _logger.LogInformation("Create User Account");
+
         return RedirectToAction("Operator");
 
 

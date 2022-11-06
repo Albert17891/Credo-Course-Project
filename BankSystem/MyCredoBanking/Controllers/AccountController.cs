@@ -11,11 +11,14 @@ public class AccountController : Controller
 {
     private readonly UserManager<AppUser> _userManager;
     private readonly SignInManager<AppUser> _signinManager;
+    private readonly ILogger<AccountController> _logger;
 
-    public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+    public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager
+        ,ILogger<AccountController> logger)
     {
         _userManager = userManager;
         _signinManager = signInManager;
+        _logger = logger;
     }
 
     [Authorize(Roles ="Operator")]
@@ -36,6 +39,8 @@ public class AccountController : Controller
 
         if (!result.Succeeded)
         {
+            _logger.LogInformation("User Registered");
+
             ModelState.AddModelError("", "Error occurrences in Register Time");
             return View();
         }
