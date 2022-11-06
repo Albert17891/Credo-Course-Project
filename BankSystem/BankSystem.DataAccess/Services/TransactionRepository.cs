@@ -42,7 +42,7 @@ public class TransactionRepository : BaseRepository<Transactions>, ITransactionR
 
         var fromDate = DateTime.Today.AddDays(-30);
 
-        var data = _context.Transactions.Where(x => x.TransactionDate >= fromDate)
+        await _context.Transactions.Where(x => x.TransactionDate >= fromDate)
             .ForEachAsync(x =>
             {
                 var date = x.TransactionDate.ToString("dd/MM");

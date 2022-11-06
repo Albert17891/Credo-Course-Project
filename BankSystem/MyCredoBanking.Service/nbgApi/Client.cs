@@ -22,7 +22,7 @@ public static class Client
 
         var result = response.GetAwaiter().GetResult();
 
-        if (result.StatusCode == HttpStatusCode.OK) throw new OperationCanceledException("HTTP request was not successful");
+        if (result.StatusCode != HttpStatusCode.OK) throw new OperationCanceledException("HTTP request was not successful");
 
         var responseData = result.Content.ReadAsStringAsync();
 
