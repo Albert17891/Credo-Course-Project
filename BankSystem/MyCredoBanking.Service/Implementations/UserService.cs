@@ -35,7 +35,7 @@ public class UserService : IUserService
     {
         var senderAccount = await _context.userAccountRepository.GetByKeyAsync(transaction.SenderAccountId);
         var recieverAccount = await _context.userAccountRepository.GetByKeyAsync(transaction.RecieverAccountId);
-        // to do
+        
         var config = new TypeAdapterConfig();
         config.NewConfig<TransactionServiceModel, Transactions>()
             .Map(dest => dest.TransferAmount, src => src.Amount)
@@ -79,7 +79,7 @@ public class UserService : IUserService
         return true;
     }
 
-    private static void ConfigureTrans(ref Transactions transaction)
+    private void ConfigureTrans(ref Transactions transaction)
     {
         if (transaction.UserId == transaction.ReceiverUserId)
         {

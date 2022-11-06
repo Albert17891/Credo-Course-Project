@@ -41,7 +41,7 @@ public class TransactionRepository : BaseRepository<Transactions>, ITransactionR
         var chartData = new Dictionary<string, int>();
 
         var fromDate = DateTime.Today.AddDays(-30);
-
+        
         await _context.Transactions.Where(x => x.TransactionDate >= fromDate)
             .ForEachAsync(x =>
             {
