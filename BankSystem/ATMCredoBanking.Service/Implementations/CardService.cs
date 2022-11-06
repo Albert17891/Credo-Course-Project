@@ -5,7 +5,6 @@ using BankSystem.DataAccess.Abstractions;
 using BankSystem.Domain.Models;
 using BankSystem.Domain.Models.Enum;
 
-
 public class CardService : ICardService
 {
     private readonly IContextWrapper _context;

@@ -14,14 +14,14 @@ public class AccountController : Controller
     private readonly ILogger<AccountController> _logger;
 
     public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager
-        ,ILogger<AccountController> logger)
+        , ILogger<AccountController> logger)
     {
         _userManager = userManager;
         _signinManager = signInManager;
         _logger = logger;
     }
 
-    [Authorize(Roles ="Operator")]
+    [Authorize(Roles = "Operator")]
     [HttpGet]
     public IActionResult Register()
     {
@@ -34,7 +34,15 @@ public class AccountController : Controller
         if (!ModelState.IsValid)
             return View();
 
-        var user = new AppUser() { UserName=register.FirstName, IdNumber = register.IdNumber, BirthDate = register.BirthDate, FirstName = register.FirstName, LastName = register.LastName, Email = register.Email };
+        var user = new AppUser()
+        {
+            UserName = register.FirstName,
+            IdNumber = register.IdNumber,
+            BirthDate = register.BirthDate.Date,
+            FirstName = register.FirstName,
+            LastName = register.LastName,
+            Email = register.Email
+        };
         var result = await _userManager.CreateAsync(user, register.Password);
 
         if (!result.Succeeded)
@@ -47,7 +55,7 @@ public class AccountController : Controller
         user.UserName = user.Email;  //UserName is Equals User Email
 
         await _userManager.AddToRoleAsync(user, RolesEnum.User.ToString());
-        return RedirectToAction("Operator","operator");
+        return RedirectToAction("Operator", "operator");
 
     }
 

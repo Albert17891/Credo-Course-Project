@@ -4,7 +4,6 @@ using BankSystem.DataAccess.Abstractions;
 using BankSystem.Domain.Models.Extra;
 using CredoReport.Models.TransactionStastistic;
 using CredoReport.Service.Abstractions;
-using System.Collections.Generic;
 
 public class TransactionStatisticService : ITransactionStatisticService
 {
@@ -37,7 +36,7 @@ public class TransactionStatisticService : ITransactionStatisticService
 
     public async Task<ChartJsServieModel> GetChartDataService()
     {
-        var data= await _contextWrapper.transactionRepository.GetChartData();
+        var data = await _contextWrapper.transactionRepository.GetChartData();
 
         var chart = ChartService.GetChart(data);
 

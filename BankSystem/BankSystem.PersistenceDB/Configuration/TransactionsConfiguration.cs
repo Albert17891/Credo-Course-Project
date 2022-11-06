@@ -4,7 +4,7 @@ using BankSystem.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-internal class TransactionsConfiguration : IEntityTypeConfiguration<Transactions>
+public class TransactionsConfiguration : IEntityTypeConfiguration<Transactions>
 {
     public void Configure(EntityTypeBuilder<Transactions> builder)
     {

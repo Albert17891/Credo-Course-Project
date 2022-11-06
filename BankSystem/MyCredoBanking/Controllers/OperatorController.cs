@@ -21,7 +21,7 @@ public class OperatorController : Controller
 
     public OperatorController(UserManager<AppUser> userManager, IOperatorService operatorService
         , IUserService userService
-        ,ILogger<OperatorController> logger)
+        , ILogger<OperatorController> logger)
     {
         _userManager = userManager;
         _operatorService = operatorService;
@@ -45,7 +45,7 @@ public class OperatorController : Controller
 
     [HttpPost]
     public async Task<IActionResult> CreateCreditCard(CreditCardRequest cardRequest)
-    {      
+    {
         await _operatorService.AddCardForAccount(cardRequest.Adapt<CreditCardServiceModel>());
         return RedirectToAction("Operator");
     }

@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 public class CreditCardConfiguration : IEntityTypeConfiguration<CreditCard>
 {
     public void Configure(EntityTypeBuilder<CreditCard> builder)
-    {     
-     
+    {
+
         builder.Property(x => x.Pin).IsRequired();
-        builder.Property(x => x.Cvv).IsRequired();        
+        builder.Property(x => x.Cvv).IsRequired();
 
         builder.Property(x => x.CardNumber).IsRequired();
         builder.Property(x => x.CardExpireDate).IsRequired();
