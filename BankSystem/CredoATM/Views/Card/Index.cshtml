@@ -10,7 +10,7 @@
 @if (Model.ResultOfCheck)
 {
     <div>
-        <h1>თქბენი ბარათის ვადა იწურება 3 თვეში გთხოვთ შეიცვალოთ</h1>
+        <h1>თქვენი ბარათის ვადა იწურება 3 თვეში, გთხოვთ განაახლოთ ბარათი.</h1>
     </div>
 }
 <ul>
@@ -19,13 +19,11 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="Card" asp-action="Withdraw">თანხის ამოღება</a>
+        <a class="nav-link text-dark" asp-area="" asp-controller="Card" asp-action="Withdraw">თანხის გამოტანა</a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link text-dark" asp-area="" asp-controller="Card" asp-action="ChangePin">პინის შეცვლა</a>
-    </li>
-
-   
+    </li>  
 
 </ul>

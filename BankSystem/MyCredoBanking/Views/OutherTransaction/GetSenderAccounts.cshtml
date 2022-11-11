@@ -15,29 +15,21 @@
             <th>
                 ვალუტა
             </th>
-
-            <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-
                 <td>
                     @Html.DisplayFor(modelItem => item.Iban)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Currency)
                 </td>
-                
-            
                 <td>
                     @Html.ActionLink("აირჩიე ანგარიში","SendToOther",new{Id=item.Id})
                 </td>
-
-
-
             </tr>
         }
     </tbody>

@@ -23,15 +23,12 @@
             <th>
                 დაბ. თარიღი
             </th>          
-
-            <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>              
-
                 <td>
                     @Html.DisplayFor(modelItem => item.FirstName)
                 </td> 
@@ -44,8 +41,6 @@
                 <td>                   
                     @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.BirthDate))
                 </td>              
-               
-
                 <td>
                     @Html.ActionLink("ანგარიშები", "GetUserAccounts", new {  Id=item.Id})
                     @Html.ActionLink("ბარათები","GetUserCards", new { id=item.Id})
