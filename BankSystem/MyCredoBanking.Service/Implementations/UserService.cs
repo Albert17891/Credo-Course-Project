@@ -33,6 +33,8 @@ public class UserService : IUserService
 
     public async Task<bool> Transaction(TransactionServiceModel transaction)
     {
+        if (transaction == null) throw new ArgumentNullException(nameof(transaction));
+
         var senderAccount = await _context.userAccountRepository.GetByKeyAsync(transaction.SenderAccountId);
         var recieverAccount = await _context.userAccountRepository.GetByKeyAsync(transaction.RecieverAccountId);
         
@@ -92,6 +94,5 @@ public class UserService : IUserService
             transaction.TransferFee = transaction.TransferAmount * 0.01m + 0.5m;
         }
         transaction.TransactionDate = DateTime.Now;
-
     }
 }
