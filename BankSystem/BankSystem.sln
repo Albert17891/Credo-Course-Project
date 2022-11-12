@@ -17,9 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AtmCredoBanking.Service", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CredoReport", "CredoReport\CredoReport.csproj", "{3AEE7DD8-B286-47A0-98F0-E48AEC917789}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CredoATM", "CredoATM\CredoATM.csproj", "{086777BC-3890-42A6-96A6-25579E187AD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CredoATM", "CredoATM\CredoATM.csproj", "{086777BC-3890-42A6-96A6-25579E187AD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CredoReport.Service", "CredoReport.Service\CredoReport.Service.csproj", "{0A9A6081-66B8-4089-9A1E-E9CC331719A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CredoReport.Service", "CredoReport.Service\CredoReport.Service.csproj", "{0A9A6081-66B8-4089-9A1E-E9CC331719A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCredoBanking.Service.Tests", "MyCredoBanking.Service.Tests\MyCredoBanking.Service.Tests.csproj", "{7D53F55E-913A-4CD7-A4A1-3D83892F1A49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{0A9A6081-66B8-4089-9A1E-E9CC331719A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A9A6081-66B8-4089-9A1E-E9CC331719A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A9A6081-66B8-4089-9A1E-E9CC331719A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D53F55E-913A-4CD7-A4A1-3D83892F1A49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D53F55E-913A-4CD7-A4A1-3D83892F1A49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D53F55E-913A-4CD7-A4A1-3D83892F1A49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D53F55E-913A-4CD7-A4A1-3D83892F1A49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
