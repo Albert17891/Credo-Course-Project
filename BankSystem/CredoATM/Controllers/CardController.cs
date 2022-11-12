@@ -52,10 +52,10 @@ public class CardController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Withdrawal(Balance balance)
+    public async Task<IActionResult> Withdrawal(Withdraw balance)
     {
         var card = HttpContext.Session.Get<CreditCardAtm>("CreditCart");
-        if (await _cardService.WithDraw(card.UserAccountId, balance.Amount))
+        if (await _cardService.WithDraw(card.UserAccountId, balance.WithdrawAmount))
         {
             return RedirectToAction("Index");
         }
